@@ -1,0 +1,16 @@
+.btn {
+  font-family: inherit;
+  border: none;
+
+  text-align: center;
+
+  text-transform: uppercase;
+  background-color: #ff6b08;
+  color: white;
+  transition: color 250ms ease, background-color 250ms ease;
+}
+
+.btn:hover,
+.btn:focus {
+  color: red;
+}

@@ -1,2 +1,16 @@
-@import './common';
-@import './example';
+@import './base/variables';
+@import './base/common';
+@import './base/reset';
+@import './base/mixins';
+
+@import './components/btn';
+@import './components/form';
+@import './components/pagination';
+
+@import './header/header';
+
+@import './main/main';
+
+@import './modal/modal';
+
+@import './footer/footer';

@@ -1,0 +1,34 @@
+@mixin mobile {
+  @media screen and (min-width: 320px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media screen and (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media screen and (min-width: 1280px) {
+    @content;
+  }
+}
+
+@mixin retina {
+  @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    @content;
+  }
+}
+
+@mixin fonts($fw, $fs, $lh, $ls, $tt, $ta) {
+  font-weight: $fw;
+  font-size: $fs;
+  line-height: $lh;
+  letter-spacing: $ls;
+  text-transform: $tt;
+  text-align: $ta;
+}
