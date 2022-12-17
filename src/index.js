@@ -1,16 +1,18 @@
-import { refs } from './js/refs';
 import ApiService from './js/fetchservice';
-
-import Pagination from 'tui-pagination';
-// import 'tui-pagination/dist/tui-pagination.css';
-const pagination = new Pagination('pagination');
-
-function render(data) {
-  const articlesList = data.hits.map(murkup);
-}
+import { refs } from './js/refs';
+import { paginationHomePage } from './js/paginationhomepage';
+import { onFilmClick } from './js/render/rendermodal';
 
 const apiService = new ApiService();
 
-apiService.fetchArticles();
+import { renderHomePage } from './js/render/renderhomepage';
 
-apiService.fetchArticles1();
+async function start() {
+  let trendingFilms = await apiService.fetchTrendingFilms();
+  renderHomePage(trendingFilms);
+  paginationHomePage();
+}
+
+start();
+
+refs.mainLibrary.addEventListener('click', onFilmClick);
