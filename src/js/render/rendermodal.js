@@ -17,7 +17,6 @@ export async function onFilmClick(event) {
 
   let modalMurkup = await markupModal(film);
   let trailerMurkup = await murkupTrailer(film);
-  console.log(trailerMurkup);
 
   const modalLightbox = basicLightbox.create(modalMurkup, {
     onShow: () => {

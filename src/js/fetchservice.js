@@ -10,11 +10,11 @@ export default class ApiService {
   }
 
   async fetchGenre() {
-    const genre = await axios.get(
+    const genres = await axios.get(
       `${BASE_URL}genre/movie/list?api_key=${API_KEY}`
     );
-    // console.log(genre.data.genres);
-    return genre.data.genres;
+    // console.log(genres.data.genres);
+    return genres.data.genres;
   }
 
   async fetchTrendingFilms() {
@@ -26,28 +26,19 @@ export default class ApiService {
   }
 
   async fetchFilmsByName() {
-    const query2 = await axios.get(
+    const name = await axios.get(
       `${BASE_URL}search/movie?api_key=${API_KEY}&query=${this.searchQuery}`
     );
-    console.log(query2.data);
-    return query2.data.results;
+    console.log(name.data.results);
+    return name.data.results;
   }
 
   async fetchFilmsById(id) {
-    const query1 = await axios.get(
+    const film = await axios.get(
       `${BASE_URL}movie/${id}?api_key=${API_KEY}&append_to_response=videos`
     );
-    console.log(query1.data);
-    return query1.data;
-  }
-
-  incrementPage() {
-    this.filmsPage += 1;
-    console.log(this.filmsPage);
-  }
-
-  resetPage() {
-    this.filmsPage = 1;
+    console.log(film.data);
+    return film.data;
   }
 
   get query() {

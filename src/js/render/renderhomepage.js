@@ -16,14 +16,17 @@ export async function renderHomePage(trendingFilms) {
         }
       });
 
-      return `<li class="library-item" data-id="${id}">
-      
-        <img class="film-poster" src="https://image.tmdb.org/t/p/w300${poster_path}" alt="${original_title}"/>
+      return `<li class="library-item" data-id="${id}"><img
+    class="film-poster"
+    src="https://image.tmdb.org/t/p/w300${poster_path}"
+    alt="${original_title}"/>
+     <div>
         <p class="film-name">${title}</p>
         <p class="film-descr">
           ${filmGenres.join(', ')} | ${release_date.slice(0, 4)}
-        
-      </a>
+        </p>
+      </div>
+      
     </li>`;
     }
   );
