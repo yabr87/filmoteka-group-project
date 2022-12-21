@@ -1,41 +1,80 @@
-import axios from 'axios';
+import axios from "axios";
 
 export class MovieService {
-
+    #BASE_URL;
     #API_KEY;
+    #TREND_URL;
+    #SEARCH_URL;
+    #ID_MOVIE_URL;
+    #GET_BY_GENRE;
+    #POSTER_PATH;
+
 
     constructor() {
         this.#API_KEY = '1db949d546d8184041e5d93169d90d9f';
+        this.#BASE_URL = 'https://api.themoviedb.org/3';
+        this.#TREND_URL = `${this.#BASE_URL}/trending/movie/week`;
+        this.#SEARCH_URL = `${this.#BASE_URL}/search/movie`;
+        this.#ID_MOVIE_URL = `${this.#BASE_URL}/movie/`;
+        this.#GET_BY_GENRE = `${this.#BASE_URL}/genre/movie/list`;
+        this.#POSTER_PATH = `https://image.tmdb.org/t/p/original`;
     }
 
-    getTrending(params = {}) {
-        let url = `https://api.themoviedb.org/3/trending`;
-        url = `${url}/${params.mediaType}/${params.timeWindow}?api_key=${this.#API_KEY}&page=${params.page}`;
-        console.log(url);
+    async getTrending(page) {
+        try {
+            const { data } = await axios.get(
+                `${this.#TREND_URL}?api_key=${this.#API_KEY}&page=${page}`,
+                console.log(`${this.#TREND_URL}?api_key=${this.#API_KEY}&page=${page}`)
+            );
+            console.log(data);
+            return data;
+        } catch (error) {
+            console.error('Smth wrong with api get full trends' + error);
+        }
+    }
+
+    async search(text, page) {
+        try {
+            const { data } = await axios.get(
+                `${this.#SEARCH_URL}?api_key=${this.#API_KEY}&query=${text}&page=${page}`,
+                console.log(`${this.#SEARCH_URL}?api_key=${this.#API_KEY}&query=${text}&page=${page}`)
+            );
+            console.log(data);
+            return data;
+        } catch (error) {
+            console.error('Smth wrong with api get full trends' + error);
+        }
+    };
+
+    async getMovieDetails(movieId) {
+        try {
+            const { data } = await axios.get(
+                `${this.#ID_MOVIE_URL}${movieId}?api_key=${this.#API_KEY}&append_to_response=videos`,
+                console.log(`${this.#ID_MOVIE_URL}${movieId}?api_key=${this.#API_KEY}&append_to_response=videos`)
+            );
+            console.log(data);
+            return data;
+        } catch (error) {
+            console.error('Smth wrong with api get full trends' + error);
+        }
+        let url = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${this.#API_KEY}`;
         return axios.get(url);
     };
 
-    search(searhTerm) {
-        let url = `https://api.themoviedb.org/3/search/movie?api_key=${this.#API_KEY}`;
-        url = url + `&query=${searhTerm.query}` + `&page=${searhTerm.page}`
-            + `&include_adult=${searhTerm.include_adult}` + `&region=${searhTerm.region}`
-            + `&year=${searhTerm.year}` + `&year=${searhTerm.year}` + `&release_year=${searhTerm.primary_release_year}`
-            + `&language=${searhTerm.language}`;
-        console.log(url);
-        return axios.get(url);
-    };
+    async getByGenre(genre) {
+        try {
+            const { data } = await axios.get(
+                `${this.#GET_BY_GENRE}?api_key=${this.#API_KEY}&append_to_response=videos`,
+                console.log(`${this.#GET_BY_GENRE}?api_key=${this.#API_KEY}&append_to_response=videos`)
+            );
+            console.log(data);
+            return data;
+        } catch (error) {
+            console.error('Smth wrong with api get full trends' + error);
+        }
+    }
 
-    getMovieDetailі(movieId) {
-        let url = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${this.#API_KEY}&append_to_response=videos`;
-        console.log(url);
-        return axios.get(url);
-    };
-
-    getByGenre(genre) {
-        let url = `https://api.themoviedb.org/3/genre/movie/list?api_key=${this.#API_KEY}`;
-        console.log(url);
-       
-        return axios.get(url);
-
-    };
+    getPosterPath(imagePath) {
+        return this.#POSTER_PATH + imagePath;
+    }
 }
