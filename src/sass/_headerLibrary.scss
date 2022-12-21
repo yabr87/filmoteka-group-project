@@ -1,0 +1,74 @@
+.header-library {
+    padding-top: 40px;
+    height: 230px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url('../images/library-320.jpg');
+
+    @include retina {
+        background-image: url('../images/library-320@2x.jpg');
+    }
+
+    @include tablet {
+        height: 215px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-image: url('../images/library-768.jpg');
+
+        @include retina {
+            background-image: url('../images/library-768@2x.jpg');
+        }
+    }
+
+    @include desktop {
+        background-image: url('../images/library-1280.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+
+        @include retina {
+            background-image: url('../images/library-1280@2x.jpg');
+        }
+    }
+}
+
+.btn-container {
+    margin-top: 49px;
+    margin-bottom: 65px;
+    display: flex;
+    justify-content: center;
+}
+
+.lib-btn:not(:last-child) {
+    margin-right: 15px;
+}
+
+.lib-btn {
+    width: 130px;
+    height: 44px;
+    padding-top: 14px;
+    padding-bottom: 12px;
+    padding-left: 36.38px;
+    padding-right: 36.38px;
+    font-size: 12px;
+    text-align: center;
+    text-decoration: none;
+    background-color: transparent;
+    color: var(--mainWhite);
+    text-transform: uppercase;
+    border: 1px solid var(--mainWhite);
+    border-radius: 5px;
+    transition: background-color 350ms linear, border 350ms linear;
+}
+
+.lib-btn:focus,
+.lib-btn:hover,
+.current-btn {
+    box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
+    background-color: var(--accent);
+    border: 0;
+    border-radius: 5px;
+    outline: none;
+}

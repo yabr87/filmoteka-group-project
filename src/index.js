@@ -4,5 +4,7 @@ import { paginationHomePage } from './js/paginationhomepage';
 import { onFilmClick } from './js/render/rendermodal';
 import { MovieService } from './js/fetchservice';
 import { search } from './js/search';
+import { MakeAuthBtn } from './js/firebase';
 
+MakeAuthBtn();
 
