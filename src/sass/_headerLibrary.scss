@@ -4,10 +4,10 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    background-image: url('/src/images/header-bg-lib-mobile.jpg');
+    background-image: url('../images/library-320.jpg');
 
     @include retina {
-        background-image: url('/src/images/header-bg-lib-mobile@2x.jpg');
+        background-image: url('../images/library-320@2x.jpg');
     }
 
     @include tablet {
@@ -15,21 +15,21 @@
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
-        background-image: url('/src/images/header-bg-lib-tablet.jpg');
+        background-image: url('../images/library-768.jpg');
 
         @include retina {
-            background-image: url('/src/images/header-bg-lib-tablet@2x.jpg');
+            background-image: url('../images/library-768@2x.jpg');
         }
     }
 
     @include desktop {
-        background-image: url('/src/images/header-bg-lib-desktop.jpg');
+        background-image: url('../images/library-1280.jpg');
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
 
         @include retina {
-            background-image: url('/src/images/header-bg-lib-desktop@2x.jpg');
+            background-image: url('../images/library-1280@2x.jpg');
         }
     }
 }
