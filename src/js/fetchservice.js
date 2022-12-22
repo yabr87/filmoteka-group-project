@@ -23,7 +23,7 @@ export class MovieService {
     this.#genresMap = this.getAllGenres();
   }
 
-  async getTrending(page) {
+  async getTrending(page = 1) {
     try {
       const { data } = await axios.get(
         `${this.#TREND_URL}?api_key=${this.#API_KEY}&page=${page}`
