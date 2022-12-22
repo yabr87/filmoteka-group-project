@@ -3,13 +3,14 @@ import { MovieService } from './fetchservice';
 import { createGalleryMarckup } from './markup/homepage';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 
+let searchTerm = '';
 const movieService = new MovieService();
 
 refs.form.addEventListener('submit', handleSubmit);
 
 async function handleSubmit(event) {
   event.preventDefault();
-  let searchTerm = event.target.searchQueue.value.trim();
+  searchTerm = event.target.searchQueue.value.trim();
   if (searchTerm === '' || searchTerm.length <= 2) {
     refs.serchError.classList.remove('is-hidden');
     return;
@@ -40,7 +41,7 @@ async function handleSubmit(event) {
 
 function cleareOldSerch() {
   // page = 1; немає такої змінної
-  searchTerm = '';
+  searchTerm = ''; // ці змінну потрібно винисти з функції було
   refs.mainLibrary.innerHTML =
     'якась розмітка з якимось текстом. по типу "упсс нічого не знайшлось". Красівоє конешно ))))?';
   refs.form.reset();
