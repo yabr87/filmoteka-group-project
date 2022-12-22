@@ -9,5 +9,6 @@ import { MakeAuthBtn } from './js/firebase';
 
 import './js/render/rendermodal';
 import './js/render/renderhomepage';
+import './js/scroll';
 
 MakeAuthBtn();
