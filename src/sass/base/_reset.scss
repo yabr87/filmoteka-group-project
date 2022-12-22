@@ -1,5 +1,9 @@
 body {
   font-family: $font-main;
+  background-color: var(--body);
+  min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 p,
 ul,
@@ -15,6 +19,7 @@ h6 {
 
 a {
   text-decoration: none;
+  color: currentColor;
   cursor: pointer;
 }
 
@@ -25,6 +30,7 @@ img {
 }
 
 button {
+  border: none;
   cursor: pointer;
 }
 
