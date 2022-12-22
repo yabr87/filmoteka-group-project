@@ -39,7 +39,7 @@ async function handleSubmit(event) {
 }
 
 function cleareOldSerch() {
-  page = 1;
+  // page = 1; немає такої змінної
   searchTerm = '';
   refs.mainLibrary.innerHTML =
     'якась розмітка з якимось текстом. по типу "упсс нічого не знайшлось". Красівоє конешно ))))?';
