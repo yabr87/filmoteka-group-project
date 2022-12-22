@@ -1,0 +1,202 @@
+.modal {
+width: 280px;
+position: absolute;
+  top: 20px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  @include tablet {
+    width: 704px;
+    top: 219px;
+  }
+    @include desktop {
+      top: 150px;
+      width: 806px;
+    }
+}
+
+.modal-cointeiner {
+  position: relative;
+  width: 100%;
+  height: 940px;
+  box-sizing: border-box;
+  padding: 48px 20px 40px 20px;
+  background-color: $white-text-color;
+
+  @include tablet {
+    padding: 40px 72px 40px 36px;
+    display: grid;
+    grid-template-columns: 264px 264px;
+    gap: 68px;
+    height: 552px;
+  }
+   @include desktop {
+    grid-template-columns: 375px 391px;
+    gap: 16px;
+    padding: 40px 12px;
+    height: 558px;
+        }
+}
+
+.modal-close {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border: none;
+  background-color: $white-text-color;
+  color:$black-text-color;
+  top: 8px;
+  right: 8px;
+  padding: 0;
+}
+
+.modal-img {
+  width: 100%;
+  height: 357px;
+  border-radius: 5px;
+
+  @include tablet {
+    height: 373.55px;
+  }
+     @include desktop {
+   height: 478px;
+     }
+}
+
+.modal-title {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.15;
+  color: $black-text-color;
+  margin: 20px 0;
+ @include tablet {
+    margin: 0 0 20px 0;
+    height: 20px;
+  }
+     @include desktop {
+      font-size: 30px;
+        line-height: 1.167;
+        height: 31px;
+     }
+}
+
+.modal-list {
+display: grid;
+grid-template-rows: 16px 16px 16px 16px;
+gap: 8px;
+align-items: center;
+}
+
+.modal-item {
+  display: grid;
+  grid-template-columns: 69px auto;
+  grid-column-gap: 39px;
+  @include desktop {
+    grid-column-gap: 83px;
+    }
+}
+
+.modal-text {
+  font-weight: 500;
+  display: flex;
+  font-size: 12px;
+  line-height: 1.33;
+  color: #8C8C8C; 
+}
+
+.modal-texting {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  color: $black-text-color;
+}
+
+.modal-rating-color {
+  background-color: $hover-rating-color;
+  color: $white-text-color;
+  width: 36px;
+  height: 16px;
+    border-radius: 5px;
+    box-sizing: border-box;
+      padding: 1px 9.5px;
+}
+
+.modal-heading {
+
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  margin: 20px 0 8px;
+  text-transform: uppercase;
+}
+
+.modal-text-p {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  height: 236px;
+  overflow: auto;
+  @include desktop {
+    height: 160px;
+    }
+}
+
+
+.modal-cointainer-btn {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 20px;
+  @include tablet {
+    grid-template-columns: 125.03px 125.03px;
+    grid-column-gap: 14.94px;
+    }
+   @include desktop {
+   grid-template-columns: 136px 136px;
+    grid-column-gap: 15px;
+    padding-left: 8px;
+  }
+}
+
+.modal-button {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  height: 44px;
+  box-sizing: border-box;
+  background-color: #FF6B01;
+  border-radius: 5px;
+  border: none;
+  text-transform: uppercase;
+  padding: 6px 27px;
+  color: $white-text-color;
+  @include tablet {
+      padding: 14px 9.19px 12px;
+    }
+   @include desktop {
+  padding: 14px 10px 12px 10px;
+}
+}
+
+.modal-btn {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  height: 44px;
+  box-sizing: border-box;
+  border: 1px solid $black-text-color;
+  background: $white-text-color;
+  border-radius: 5px;
+  padding: 13px 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  color: $black-text-color;
+  @include tablet {
+      padding: 14px 7.35px 12px;
+    }
+  @include desktop {
+   padding: 14px 8px 12px 8px;
+    }
+}
