@@ -1,38 +1,23 @@
+import { refs } from './refs';
 import { MovieService } from './fetchservice';
+import { createGalleryMarckup } from './markup/homepage';
+const movieService = new MovieService();
 
-
-const form = document.querySelector('#search-form');
-const gallery = document.querySelector('.main-library-item');
-let searchTerm;
-let movieService = new MovieService();
-
-form.addEventListener('submit', handleSubmit);
+refs.form.addEventListener('submit', handleSubmit);
 
 async function handleSubmit(event) {
-    event.preventDefault();
-    searchTerm = event.target.searchQueue.value.trim();
-    let data = await movieService.search(searchTerm, 1);
-    gallery.insertAdjacentHTML("beforeend", createGalleryMarckup(data.results));
-};
+  event.preventDefault();
+  let searchTerm = event.target.searchQueue.value.trim();
+  let data = await movieService.search(searchTerm, 1);
 
-function createGalleryMarckup(response) {
-    return response
-        .map(({poster_path, backdrop_path, title, release_date, genre}) => {
-            return `
-            
-                <a href="${movieService.getPosterPath(backdrop_path)}">
-                    <img class="card-img" src="${movieService.getPosterPath(poster_path)}" alt="${title}" loading="lazy" />
-                </a>
-                <div class="info">
-                    <p class="info-item">
-                    <b >${title}</b>
-                    </p>
-                    <p class="info-item">
-                    <b>${genre}</b>
-                    </p>
-                    <p class="info-item">
-                    <b >${release_date}</b>
-                    </p>
-                </div>
-        `}).join('');    
-};
+  // чистимо контейнер!!!
+  refs.mainLibrary.innerHTML = '';
+
+  // вставляємо розмітку в контейнер UL, а не в лішку !!!
+  refs.mainLibrary.insertAdjacentHTML(
+    'beforeend',
+    createGalleryMarckup(data.results)
+  );
+}
+
+// виносимо розмітку в інший файл './markup/homepage';
