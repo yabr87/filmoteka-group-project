@@ -5,7 +5,7 @@ import ApiService from './fetchservice';
 
 const moviesService = new ApiService();
 
-export function paginationMainPage(call) {
+export function paginationMainPage() {
   const container = document.getElementById('paginationhomepage');
   const optionsMainPagination = {
     totalItems: 20,
