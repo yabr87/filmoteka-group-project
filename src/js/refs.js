@@ -9,4 +9,5 @@ export const refs = {
     svgSize: '200px',
     svgColor: '#FF6B01',
   },
+  paginationContainer: document.querySelector('#paginationhomepage'),
 };

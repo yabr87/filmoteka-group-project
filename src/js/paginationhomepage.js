@@ -1,14 +1,11 @@
 import { refs } from './refs';
-import { renderHomePage } from './render/renderhomepage';
 import Pagination from 'tui-pagination';
-import ApiService from './fetchservice';
-
-const moviesService = new ApiService();
-
-export function paginationMainPage() {
-  const container = document.getElementById('paginationhomepage');
+import { MovieService } from './fetchservice';
+import { createGalleryMarckup } from './markup/homepage';
+const moviesService = new MovieService();
+export function paginationMainPage(totalPage) {
   const optionsMainPagination = {
-    totalItems: 20,
+    totalItems: totalPage,
     itemsPerPage: 1,
     visiblePages: 5,
     centerAlign: true,
@@ -33,15 +30,19 @@ export function paginationMainPage() {
         '</a>',
     },
   };
-
-  const pagination = new Pagination(container, optionsMainPagination);
-
+  const pagination = new Pagination(
+    refs.paginationContainer,
+    optionsMainPagination
+  );
   pagination.on('beforeMove', evt => {
-    console.log(evt.page);
     moviesService.page = evt.page;
+    console.log(moviesService.page);
     refs.mainLibrary.innerHTML = '';
-    ApiService.fetchTrendingFilms().then(r => {
-      renderHomePage(r);
+    moviesService.getTrending().then(r => {
+      refs.mainLibrary.insertAdjacentHTML(
+        'beforeend',
+        createGalleryMarckup(r.results)
+      );
     });
   });
 }
