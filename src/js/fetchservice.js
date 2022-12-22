@@ -1,6 +1,5 @@
 import axios from 'axios';
 import genresJson from './components/genres.json';
-
 export class MovieService {
   #BASE_URL;
   #API_KEY;
@@ -9,9 +8,7 @@ export class MovieService {
   #ID_MOVIE_URL;
   #GET_BY_GENRE;
   #POSTER_PATH;
-
   #genresMap;
-
   constructor() {
     this.#API_KEY = '1db949d546d8184041e5d93169d90d9f';
     this.#BASE_URL = 'https://api.themoviedb.org/3';
@@ -21,19 +18,18 @@ export class MovieService {
     this.#GET_BY_GENRE = `${this.#BASE_URL}/genre/movie/list`;
     this.#POSTER_PATH = `https://image.tmdb.org/t/p/original`;
     this.#genresMap = this.readGenresFromJson();
+    this.page = 1;
   }
-
-  async getTrending(page) {
+  async getTrending() {
     try {
       const { data } = await axios.get(
-        `${this.#TREND_URL}?api_key=${this.#API_KEY}&page=${page}`
+        `${this.#TREND_URL}?api_key=${this.#API_KEY}&page=${this.page}`
       );
       return data;
     } catch (error) {
       console.error('Smth wrong with api get full trends' + error);
     }
   }
-
   async search(text, page) {
     try {
       const { data } = await axios.get(
@@ -46,7 +42,6 @@ export class MovieService {
       console.error('Smth wrong with api get full trends' + error);
     }
   }
-
   async getMovieDetails(movieId) {
     try {
       const { data } = await axios.get(
@@ -63,7 +58,6 @@ export class MovieService {
     }`;
     return axios.get(url);
   }
-
   async getByGenre(genre) {
     try {
       const { data } = await axios.get(
@@ -74,12 +68,10 @@ export class MovieService {
       console.error('Smth wrong with api get full trends' + error);
     }
   }
-
   getPosterPath(imagePath) {
     return this.#POSTER_PATH + imagePath;
   }
-
-9
+  9;
   getGenresByIds(ids) {
     const genres = [];
     ids.forEach(id => {
@@ -87,7 +79,6 @@ export class MovieService {
     });
     return genres;
   }
-
   readGenresFromJson() {
     const genresMap = new Map();
     genresJson.genres.map(entry => {
