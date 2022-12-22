@@ -4,6 +4,8 @@ export const refs = {
   authBtnWrap: document.querySelector('.auth-link-wrap'),
   form: document.querySelector('#search-form'),
   serchError: document.querySelector('.is-hidden'),
+  inputEl: document.querySelector('#slider'),
+  main: document.querySelector('main'),
   loadOptions: {
     clickToClose: true,
     svgSize: '200px',
