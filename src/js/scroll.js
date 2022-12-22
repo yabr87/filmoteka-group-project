@@ -1,25 +1,24 @@
-const scrollToTopBtn = document.querySelector('#scrollToTopBtn');
-const rootElement = document.documentElement;
+import { refs } from './refs';
 
-function scrollToTop() {
-  rootElement.scrollTo({
+export function scrollToTop() {
+  refs.rootElement.scrollTo({
     top: 0,
     behavior: 'smooth',
   });
 }
 
-scrollToTopBtn.addEventListener('click', scrollToTop);
+refs.scrollToTopBtn.addEventListener('click', scrollToTop);
 
-function scrollEvent() {
+export function scrollEvent() {
   if (window.pageYOffset > 300) {
-    scrollToTopBtn.classList.add('scroll-visible');
-    scrollToTopBtn.classList.remove('noHover');
-    scrollToTopBtn.classList.remove('clicked');
+    refs.scrollToTopBtn.classList.add('scroll-visible');
+    refs.scrollToTopBtn.classList.remove('noHover');
+    refs.scrollToTopBtn.classList.remove('clicked');
   } else {
-    scrollToTopBtn.classList.remove('scroll-visible');
-    scrollToTopBtn.classList.add('noHover');
-    scrollToTopBtn.classList.add('clicked');
+    refs.scrollToTopBtn.classList.remove('scroll-visible');
+    refs.scrollToTopBtn.classList.add('noHover');
+    refs.scrollToTopBtn.classList.add('clicked');
   }
 }
 
-window.addEventListener('scroll', scrollEvent);
+refs.window.addEventListener('scroll', scrollEvent);
