@@ -12,11 +12,7 @@ export async function onFilmClick(event) {
   event.preventDefault();
   if (event.target === event.currentTarget) return;
 
-  Loading.hourglass({
-    clickToClose: true,
-    svgSize: '200px',
-    svgColor: '#FF6B01',
-  });
+  Loading.hourglass(refs.loadOptions);
   const film = await movieService.getMovieDetails(
     event.target.parentNode.dataset.id
   );
@@ -55,11 +51,7 @@ export async function onFilmClick(event) {
   const trailer = basicLightbox.create(trailerMurkup);
 
   function showTrailer() {
-    Loading.hourglass({
-      clickToClose: true,
-      svgSize: '200px',
-      svgColor: '#FF6B01',
-    });
+    Loading.hourglass(refs.loadOptions);
     trailer.show();
     Loading.remove();
   }
