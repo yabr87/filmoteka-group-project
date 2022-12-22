@@ -8,6 +8,6 @@ import { search } from './js/search';
 import { MakeAuthBtn } from './js/firebase';
 
 import './js/render/rendermodal';
-import './js/render/renderHomePage';
+import './js/render/renderhomepage';
 
 MakeAuthBtn();
