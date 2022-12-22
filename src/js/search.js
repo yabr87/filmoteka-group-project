@@ -10,29 +10,38 @@ refs.form.addEventListener('submit', handleSubmit);
 async function handleSubmit(event) {
   event.preventDefault();
   let searchTerm = event.target.searchQueue.value.trim();
-  let data = await movieService.search(searchTerm, 1);
-  if (data === null || data === undefined || data === ' ' || data.results.length === 0) {
+  if (searchTerm === '' || searchTerm.length <= 2) {
     refs.serchError.classList.remove('is-hidden');
-}else {
+    return;
+  }
+
+  Loading.hourglass(refs.loadOptions);
+  let data = await movieService.search(searchTerm, 1);
+  Loading.remove();
+  if (
+    data === null ||
+    data === undefined ||
+    data === '' ||
+    data.results.length === 0
+  ) {
+    refs.serchError.classList.remove('is-hidden');
+    cleareOldSerch();
+    return;
+  } else {
     refs.serchError.classList.add('is-hidden');
   }
-    cleareOldSerch();
-    Loading.hourglass({
-    clickToClose: true,
-    svgSize: '200px',
-    svgColor: '#FF6B01',
-  });
+  cleareOldSerch();
+
   refs.mainLibrary.insertAdjacentHTML(
     'beforeend',
     createGalleryMarckup(data.results)
   );
-
-  Loading.remove();
 }
 
 function cleareOldSerch() {
-    page = 1;
-    searchTerm = '';
-  refs.mainLibrary.innerHTML = '';
+  page = 1;
+  searchTerm = '';
+  refs.mainLibrary.innerHTML =
+    'якась розмітка з якимось текстом. по типу "упсс нічого не знайшлось". Красівоє конешно ))))?';
   refs.form.reset();
 }
