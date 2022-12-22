@@ -20,7 +20,7 @@ export class MovieService {
     this.#ID_MOVIE_URL = `${this.#BASE_URL}/movie/`;
     this.#GET_BY_GENRE = `${this.#BASE_URL}/genre/movie/list`;
     this.#POSTER_PATH = `https://image.tmdb.org/t/p/original`;
-    this.#genresMap = this.getAllGenres();
+    this.#genresMap = this.readGenresFromJson();
   }
 
   async getTrending(page) {
@@ -41,7 +41,6 @@ export class MovieService {
           this.#API_KEY
         }&query=${text}&page=${page}`
       );
-      console.log(data);
       return data;
     } catch (error) {
       console.error('Smth wrong with api get full trends' + error);
@@ -80,19 +79,16 @@ export class MovieService {
     return this.#POSTER_PATH + imagePath;
   }
 
-  getGenreById(id) {
-    return this.#genresMap.get(id);
-  }
-
+9
   getGenresByIds(ids) {
     const genres = [];
     ids.forEach(id => {
-      genres.push(this.getGenreById(id));
+      genres.push(this.#genresMap.get(id));
     });
     return genres;
   }
 
-  getAllGenres() {
+  readGenresFromJson() {
     const genresMap = new Map();
     genresJson.genres.map(entry => {
       genresMap.set(entry.id, entry.name);

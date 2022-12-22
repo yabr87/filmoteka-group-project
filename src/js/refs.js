@@ -3,6 +3,7 @@ export const refs = {
   myLibrary: document.querySelector('.js-my-library'),
   authBtnWrap: document.querySelector('.auth-link-wrap'),
   form: document.querySelector('#search-form'),
+  serchError: document.querySelector('.is-hidden'),
   loadOptions: {
     clickToClose: true,
     svgSize: '200px',
