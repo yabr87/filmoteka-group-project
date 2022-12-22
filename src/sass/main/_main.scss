@@ -1,3 +1,14 @@
+.main {
+  padding-top: 20px;
+  padding-bottom: 40px;
+  display: flex;
+
+  @include tablet {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+}
+
 .main-library-list {
   display: flex;
   flex-wrap: wrap;
@@ -91,4 +102,30 @@
   @media screen and (min-width: 1280px) {
     line-height: 1.2;
   }
+}
+
+.container {
+  max-width: 1280px;
+  padding-left: 20px;
+  padding-right: 20px;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  @include mobile {
+    max-width: 480px;
+  }
+
+  @include tablet {
+    max-width: 768px;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  @include desktop {
+    max-width: 1280px;
+  }
+}
+.stretch {
+  flex-grow: 1;
 }

@@ -9,6 +9,26 @@
 .modal-container {
 }
 .close-btn {
+    position: absolute;
+      top: 8px;
+      right: 8px;
+    
+      transform: rotate(0);
+      transition: transform 250ms ease-in;
+    
+      & svg {
+    
+        fill: #000000;
+      }
+    
+      &:hover svg,
+      &:focus svg {
+        fill: #000000
+      }
+    
+      &:hover {
+        transform: rotate(90deg);
+      }
 }
 .trailer-btn {
 }
