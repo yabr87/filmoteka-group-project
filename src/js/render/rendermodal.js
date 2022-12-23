@@ -135,11 +135,11 @@ async function markupModal(film) {
         <button class="modal-btn js-btn-watched ${
           ifUserSignin ? '' : 'disabled'
         }" data-id="${id}"
-          data-type="Watched">add to Watched</button>
+          data-type="Watched">remove to Watched</button>
         <button class="modal-btn js-btn-queue ${
           ifUserSignin ? '' : 'disabled'
         }" data-id="${id}" data-type="Queue" 
-        >add to queue</button>
+        >Remove to queue</button>
       </div>
 
     </div>
@@ -163,10 +163,17 @@ function murkupTrailer({ videos }) {
   return markup;
 }
 
-function onBtnQueClick(event) {
+async function onBtnQueClick(event) {
   if (event.target.classList.contains('disabled')) {
     Notiflix.Notify.failure('Log in first!', refs.mesageOption);
     return;
+  }
+  const userData = await getUserData();
+
+  if (userData.Watched.includes(event.target.dataset.id)) {
+    console.log('такий фільм є');
+  } else {
+    console.log('такого немає');
   }
 }
 
@@ -176,13 +183,11 @@ async function onBtnWatchedClick(event) {
     return;
   }
 
-  const x = await getUserData();
+  const userData = await getUserData();
 
-  if (x.Watched.includes(event.target.dataset.id)) {
-    console.log("такий фільм є")
-    
+  if (userData.Watched.includes(event.target.dataset.id)) {
+    console.log('такий фільм є');
   } else {
     console.log('такого немає');
   }
-  
 }
