@@ -36,7 +36,7 @@ export async function onFilmClick(event) {
       modalLightbox.element().querySelector('.trailer-btn').onclick =
         showTrailer;
 
-      modalLightbox.element().querySelector('.close-btn').onclick =
+      modalLightbox.element().querySelector('.modal-close').onclick =
         onModalLightboxClose;
 
       document.addEventListener('keydown', onModalLightboxClose);
@@ -84,53 +84,52 @@ async function markupModal(film) {
   console.log(videos.results);
   const filmGenres = genres.map(genre => genre.name).join(', ');
 
-  let markup = `<div class="modal-container">
-      <button type="button" class="close-btn">X</button>
-      <button type="button" class="trailer-btn"
-      }">trailer</button>
-      <img
-      src="https://image.tmdb.org/t/p/w300${poster_path}"
-      alt="film poster"
-      class="modal-poster"
-    />
+  let markup = `<div class="modal">
+
+  <div class="modal-cointeiner">
+  
+  <button class="modal-close" data-modal-close><img src="/src/images/close.jpg" alt="button-close"></button>
+    <div class="modal-thumb-img">
+      <button type="button" class="trailer-btn">trailer</button>
+      <img class="modal-img" src="https://image.tmdb.org/t/p/w300${poster_path}" alt="film ${title}">
+    </div>
+    <div class="modal-thumb-text">
       <h2 class="modal-title">${title}</h2>
-      <div class="film-stats">
-        <ul class="list modal-categories">
-          <li class="modal-categories-item"><p>Vote / Votes</p></li>
-          <li class="modal-categories-item"><p>Popularity</p></li>
-          <li class="modal-categories-item"><p>Original Title</p></li>
-          <li class="modal-categories-item"><p>Genre</p></li>
-        </ul>
-        <ul class="list modal-stats">
-          <li class="modal-stats-item">
-            <p>
-              <span class="modal-vote-average">${vote_average}</span> /
-              <span class="modal-vote-count">${vote_count}</span>
-            </p>
-          </li>
-          <li class="modal-stats-item"><p>${popularity}</p></li>
-          <li class="modal-stats-item"><p>${original_title}</p></li>
-          <li class="modal-stats-item"><p>${filmGenres}</p></li>
-        </ul>
+      <ul class="modal-list">
+
+        <li class="modal-item">
+          <p class="modal-text">Vote / Votes</p>
+          <p class="modal-texting"><span class="modal-rating-color">${vote_average}</span> / ${vote_count}</p>
+        </li>
+
+        <li class="modal-item">
+          <p class="modal-text" class="modal-text">Popularity</p>
+          <p class="modal-texting">${popularity}</p>
+        </li>
+
+        <li class="modal-item">
+          <p class="modal-text">Original Title</p>
+          <p class="modal-texting">${original_title}</p>
+        </li>
+
+        <li class="modal-item">
+          <p class="modal-text">Genre</p>
+          <p class="modal-texting">${filmGenres}</p>
+        </li>
+
+      </ul>
+      <h3 class="modal-heading">About</h3>
+      <p class="modal-text-p">${overview}</p>
+      <div class="modal-cointainer-btn">
+        <button class="modal-button b js-btn-watched" data-id="${id}"
+          data-type="Watched">add to Watched</button>
+        <button class="modal-btn js-btn-queue" data-id="${id}" data-type="Queue"">add to queue</button>
       </div>
-      <h3 class="about-title">About</h3>
-      <p class="modal-overview">${overview}</p>
-      <div class="modal-btns-wrap">
-        <button
-          class="btn modal-watched-btn js-btn-watched"
-          data-id="${id}"
-          data-type="Watched"
-        >
-          ${w ? 'remove to watced' : 'add to watced'}
-        </button>
-        <br/>
-        <br/>
-        <br/>
-        <button class="btn modal-queue-btn js-btn-queue" data-id="${id}" data-type="Queue">
-          ${q ? 'remove to watced' : 'add to watced'}
-        </button>
-      </div>
-    </div>`;
+
+    </div>
+
+  </div>
+</div>`;
   return markup;
 }
 
@@ -146,9 +145,6 @@ function murkupTrailer({ videos }) {
   ></iframe>`;
   return markup;
 }
-
-let q = true;
-let w = true;
 
 function onBtnQueClick(event) {
   if (q) {
