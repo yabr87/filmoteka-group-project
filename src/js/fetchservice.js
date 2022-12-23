@@ -86,4 +86,13 @@ export class MovieService {
     });
     return genresMap;
   }
+  fetchByMultipleIds(arr) {
+    return arr.map(id => {
+      return axios.get(
+        `https://api.themoviedb.org/3/movie/${id}?api_key=${
+          this.#API_KEY
+        }&append_to_response=videos`
+      );
+    });
+  }
 }
