@@ -1,0 +1,50 @@
+.scroll {
+  display: none;
+  position: fixed;
+  bottom: 15px;
+  right: 20px;
+
+  width: 40px;
+  height: 40px;
+
+  visibility: hidden;
+  opacity: 0;
+
+  font-size: 20px;
+
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+
+  background-color: $button-header-library;
+
+  transition: $timing-function;
+}
+
+.scroll-visible {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: visible;
+  opacity: 0.7;
+
+  animation-name: animation-btn;
+  animation-duration: 500ms;
+  animation-timing-function: linear;
+  @media (hover: hover) {
+    &:hover {
+      transform: scale(1.1);
+      background-color: $color-accent;
+    }
+  }
+  @media (hover: none) {
+    &:active {
+      transform: scale(1.1);
+      background-color: $color-accent;
+    }
+  }
+}
+
+.scroll__icon {
+  transform: rotate(-90deg);
+}

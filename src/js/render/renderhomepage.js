@@ -1,12 +1,18 @@
 import { refs } from '../refs';
 import { MovieService } from '../fetchservice';
 import { createGalleryMarckup } from '../markup/homepage';
+import {
+  paginationMainPage,
+  mainPageOnPaginClick,
+  searchOnPaginClick,
+} from '../paginationhomepage';
 
-const movieService = new MovieService();
+async function renderhomepage() {
+  const movieService = new MovieService();
 
-async function renderhomepage(page = 1) {
-  const data = await movieService.getTrending(page);
-  console.log(data);
+  const data = await movieService.getTrending();
+
+  paginationMainPage(data.total_pages, mainPageOnPaginClick);
 
   refs.mainLibrary.insertAdjacentHTML(
     'beforeend',
