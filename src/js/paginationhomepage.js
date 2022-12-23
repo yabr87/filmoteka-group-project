@@ -3,6 +3,7 @@ import Pagination from 'tui-pagination';
 import { MovieService } from './fetchservice';
 import { createGalleryMarckup } from './markup/homepage';
 const moviesService = new MovieService();
+
 export function paginationMainPage(totalPage) {
   const optionsMainPagination = {
     totalItems: totalPage,
