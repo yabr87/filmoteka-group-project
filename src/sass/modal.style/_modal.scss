@@ -146,26 +146,6 @@
   }
 }
 
-.modal-button {
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 1.33;
-  height: 44px;
-  box-sizing: border-box;
-  background-color: #ff6b01;
-  border-radius: 5px;
-  border: none;
-  text-transform: uppercase;
-  padding: 6px 27px;
-  color: $white-text-color;
-  @include tablet {
-    padding: 14px 9.19px 12px;
-  }
-  @include desktop {
-    padding: 14px 10px 12px 10px;
-  }
-}
-
 .modal-btn {
   font-weight: 500;
   font-size: 12px;
@@ -181,12 +161,43 @@
   justify-content: center;
   text-transform: uppercase;
   color: $black-text-color;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  transition: all 0.25s;
   @include tablet {
     padding: 14px 7.35px 12px;
   }
   @include desktop {
     padding: 14px 8px 12px 8px;
   }
+}
+
+.modal-btn:hover {
+  background-color: #ff6b01;
+  border: 1px solid #ff6b01;
+  color: $white-text-color;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  // @include tablet {
+  //   padding: 14px 9.19px 12px;
+  // }
+  // @include desktop {
+  //   padding: 14px 10px 12px 10px;
+  // }
+}
+
+.modal-btn.active {
+  background-color: #ff6b01;
+  border: 1px solid #ff6b01;
+  color: $white-text-color;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.modal-btn.disabled {
+  background-color: silver;
+  border: 1px solid $black-text-color;
+  color: $black-text-color;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 }
 
 .basicLightbox.basicLightbox--visible {
@@ -207,6 +218,7 @@
   text-transform: uppercase;
   border-radius: 5px;
   background-color: #ff6b01;
+
   &:hover {
     color: #ff6b01;
     background-color: white;
@@ -215,4 +227,11 @@
 
 .modal-thumb-img {
   position: relative;
+}
+
+.modal-close {
+  transition: transform 0.25s;
+}
+.modal-close:hover {
+  transform: rotate(90deg);
 }

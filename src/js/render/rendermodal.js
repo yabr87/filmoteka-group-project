@@ -1,7 +1,10 @@
 // доробити розмітку модалки
-import { Loading } from 'notiflix/build/notiflix-loading-aio';
+import Notiflix from 'notiflix';
+
 import { refs } from '../refs';
 import { MovieService } from '../fetchservice';
+import { getCurrentUser, getUserData } from '../firebase';
+import closeBtn from '../../images/close.svg';
 
 import * as basicLightbox from 'basiclightbox';
 import 'basiclightbox/dist/basicLightbox.min.css';
@@ -12,11 +15,11 @@ export async function onFilmClick(event) {
   event.preventDefault();
   if (event.target === event.currentTarget) return;
 
-  Loading.hourglass(refs.loadOptions);
+  Notiflix.Loading.hourglass(refs.loadOptions);
   const film = await movieService.getMovieDetails(
     event.target.parentNode.dataset.id
   );
-  Loading.remove();
+  Notiflix.Loading.remove();
 
   let modalMurkup = await markupModal(film);
   let trailerMurkup = await murkupTrailer(film);
@@ -51,9 +54,9 @@ export async function onFilmClick(event) {
   const trailer = basicLightbox.create(trailerMurkup);
 
   function showTrailer() {
-    Loading.hourglass(refs.loadOptions);
+    Notiflix.Loading.hourglass(refs.loadOptions);
     trailer.show();
-    Loading.remove();
+    Notiflix.Loading.remove();
   }
 
   function onModalLightboxClose(event) {
@@ -80,6 +83,8 @@ async function markupModal(film) {
     id,
   } = film;
 
+  const ifUserSignin = await getCurrentUser();
+
   console.log(genres);
   console.log(videos.results);
   const filmGenres = genres.map(genre => genre.name).join(', ');
@@ -88,7 +93,7 @@ async function markupModal(film) {
 
   <div class="modal-cointeiner">
   
-  <button class="modal-close" data-modal-close><img src="/src/images/close.jpg" alt="button-close"></button>
+  <button class="modal-close" data-modal-close><img src="${closeBtn}" alt="button-close"></button>
     <div class="modal-thumb-img">
       <button type="button" class="trailer-btn">trailer</button>
       <img class="modal-img" src="https://image.tmdb.org/t/p/w300${poster_path}" alt="film ${title}">
@@ -121,9 +126,14 @@ async function markupModal(film) {
       <h3 class="modal-heading">About</h3>
       <p class="modal-text-p">${overview}</p>
       <div class="modal-cointainer-btn">
-        <button class="modal-button b js-btn-watched" data-id="${id}"
+        <button class="modal-btn js-btn-watched ${
+          ifUserSignin ? '' : 'disabled'
+        }" data-id="${id}"
           data-type="Watched">add to Watched</button>
-        <button class="modal-btn js-btn-queue" data-id="${id}" data-type="Queue"">add to queue</button>
+        <button class="modal-btn js-btn-queue ${
+          ifUserSignin ? '' : 'disabled'
+        }" data-id="${id}" data-type="Queue" 
+        >add to queue</button>
       </div>
 
     </div>
@@ -147,29 +157,18 @@ function murkupTrailer({ videos }) {
 }
 
 function onBtnQueClick(event) {
-  if (q) {
-    q = false;
-    event.target.textContent = `add to queue`;
-    console.log(q);
-    return;
-  } else {
-    q = true;
-    event.target.textContent = `remove to queue`;
-    console.log(q);
+  if (event.target.classList.contains('disabled')) {
+    Notiflix.Notify.failure('Log in first!', {
+      showOnlyTheLastOne: true,
+      clickToClose: true,
+    });
     return;
   }
 }
 
 function onBtnWatchedClick(event) {
-  if (w) {
-    w = false;
-    event.target.textContent = `add to watced`;
-    console.log(w);
-    return;
-  } else {
-    w = true;
-    event.target.textContent = `remome to watced`;
-    console.log(w);
+  if (event.target.classList.contains('disabled')) {
+    Notiflix.Notify.failure('Log in first!', );
     return;
   }
 }
