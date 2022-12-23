@@ -41,7 +41,7 @@ function createLybraryMarckup(filmsArr) {
             class="main-film-poster"
             />
             <h2 class="main-film-name">${title}</h2>
-            <p class="main-film-description">
+            <p class="main-film-description" data-id="${id}">
               <span class="main-film-genres">${filmGenres}</span> |
               <span class="main-film-premiere">${release_date.slice(
                 0,

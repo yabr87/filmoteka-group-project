@@ -6,8 +6,10 @@ import { MovieService } from './js/fetchservice';
 import { search } from './js/search';
 import { MakeAuthBtn } from './js/firebase';
 
-import './js/render/rendermodal';
+// import './js/render/rendermodal';
 import './js/render/renderhomepage';
 import './js/scroll';
 
 MakeAuthBtn();
+
+refs.mainLibrary.addEventListener('click', onFilmClick);

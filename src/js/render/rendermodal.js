@@ -173,5 +173,3 @@ function onBtnWatchedClick(event) {
     return;
   }
 }
-
-refs.mainLibrary.addEventListener('click', onFilmClick);
