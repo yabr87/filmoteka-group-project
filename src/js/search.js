@@ -41,8 +41,7 @@ async function handleSubmit(event) {
 
 function cleareOldSerch() {
   // page = 1; немає такої змінної
-  searchTerm = ''; // ці змінну потрібно винисти з функції було
-  refs.mainLibrary.innerHTML =
-    'якась розмітка з якимось текстом. по типу "упсс нічого не знайшлось". Красівоє конешно ))))?';
+  searchTerm = '';
+  refs.mainLibrary.innerHTML = '';
   refs.form.reset();
 }
