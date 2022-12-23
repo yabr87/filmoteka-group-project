@@ -4,7 +4,7 @@ import './scroll';
 import './markup/libraryMarkup';
 import { libraryFetch } from './markup/libraryMarkup';
 
-onHeaderBtnsClick = e => {
+const onHeaderBtnsClick = e => {
   const btnType = e.target.dataset.type;
   if (!btnType) {
     return;
