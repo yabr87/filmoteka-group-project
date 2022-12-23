@@ -1,38 +1,67 @@
+import { refs } from './refs';
 import { MovieService } from './fetchservice';
+import { createGalleryMarckup } from './markup/homepage';
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
+import { paginationMainPage } from './paginationhomepage';
 
+let searchTerm = '';
+const movieService = new MovieService();
 
-const form = document.querySelector('#search-form');
-const gallery = document.querySelector('.main-library-item');
-let searchTerm;
-let movieService = new MovieService();
+const searchOnPaginClick = evt => {
+  Loading.hourglass(refs.loadOptions);
+  movieService.page = evt.page;
 
-form.addEventListener('submit', handleSubmit);
+  refs.mainLibrary.innerHTML = '';
+  movieService.search().then(r => {
+    refs.mainLibrary.insertAdjacentHTML(
+      'beforeend',
+      createGalleryMarckup(r.results)
+    );
+    Loading.remove();
+  });
+};
+
+refs.form.addEventListener('submit', handleSubmit);
 
 async function handleSubmit(event) {
-    event.preventDefault();
-    searchTerm = event.target.searchQueue.value.trim();
-    let data = await movieService.search(searchTerm, 1);
-    gallery.insertAdjacentHTML("beforeend", createGalleryMarckup(data.results));
-};
+  event.preventDefault();
+  searchTerm = event.target.searchQueue.value.trim();
+  if (searchTerm === '' || searchTerm.length <= 2) {
+    refs.serchError.classList.remove('is-hidden');
+    return;
+  }
 
-function createGalleryMarckup(response) {
-    return response
-        .map(({poster_path, backdrop_path, title, release_date, genre}) => {
-            return `
-            
-                <a href="${movieService.getPosterPath(backdrop_path)}">
-                    <img class="card-img" src="${movieService.getPosterPath(poster_path)}" alt="${title}" loading="lazy" />
-                </a>
-                <div class="info">
-                    <p class="info-item">
-                    <b >${title}</b>
-                    </p>
-                    <p class="info-item">
-                    <b>${genre}</b>
-                    </p>
-                    <p class="info-item">
-                    <b >${release_date}</b>
-                    </p>
-                </div>
-        `}).join('');    
-};
+  movieService.searchQuery = searchTerm;
+
+  Loading.hourglass(refs.loadOptions);
+  let data = await movieService.search();
+  Loading.remove();
+
+  if (
+    data === null ||
+    data === undefined ||
+    data === '' ||
+    data.results.length === 0
+  ) {
+    refs.serchError.classList.remove('is-hidden');
+    cleareOldSerch();
+    return;
+  } else {
+    refs.serchError.classList.add('is-hidden');
+  }
+  cleareOldSerch();
+
+  paginationMainPage(data.total_pages, searchOnPaginClick);
+
+  refs.mainLibrary.insertAdjacentHTML(
+    'beforeend',
+    createGalleryMarckup(data.results)
+  );
+}
+
+function cleareOldSerch() {
+  // page = 1; немає такої змінної
+  searchTerm = '';
+  refs.mainLibrary.innerHTML = '';
+  refs.form.reset();
+}

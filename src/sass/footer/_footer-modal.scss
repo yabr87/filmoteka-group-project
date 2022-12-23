@@ -1,0 +1,165 @@
+.footer-modal-close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    height: 32px;
+    width: 32px;
+    display: flex;
+    align-items: center;
+    background-color: #f7f7f7;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    cursor: pointer;
+            transition: all 0.25s linear;
+
+    &:hover,
+    &:focus {
+        background-color: orange;
+        transition: all 0.25s linear;
+    }
+}
+
+
+.backdrop-team {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.56);
+    opacity: 1;
+    z-index: 1000;
+    transition-duration: .4s;      
+}
+
+
+.hidden {
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+}
+
+.footer-modal-group {
+    min-width: 280px;
+    max-height: 98%;
+    overflow: auto;
+    background-color: #fff;
+    position: absolute;
+    overflow-x: hidden;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: (0px 8px 40px rgba(0, 0, 0, 0.55));
+    border-radius: 10px;
+    padding: 20px;
+
+    @media screen and (min-width: 768px) {
+        width: 618px;
+    }
+
+    @media screen and (min-width: 1024px) {
+        width: 882px;
+    }
+}
+
+.footer-modal-group .team-name {
+    margin-bottom: 30px;
+    font-weight: 900;
+    font-size: 34px;
+    line-height: 1.3;
+    letter-spacing: 0.5px;
+    text-align: center;
+    color: orange;
+
+    @media screen and (min-width: 1024px) {
+        font-size: 45px;
+    }
+ 
+}
+
+.group {
+    display: grid;
+
+    gap: 30px;
+    text-align: center;
+
+    @media screen and (min-width: 768px) {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+
+    @media screen and (min-width: 1024px) {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+    }
+
+    &__item {
+        transition-duration: .25s;
+        border-bottom-right-radius: 4px;
+        border-bottom-left-radius: 4px;
+        box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+            0px 2px 1px rgba(0, 0, 0, 0.2);
+
+        &:hover {
+            
+            transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+            transform: scale(1.08);
+        }
+
+       
+
+  
+
+    &__item-photo {
+        width: 280px;
+        height: 280px;
+        object-fit: cover;
+        cursor: pointer;
+        border-top-right-radius: 4px;
+        border-top-left-radius: 4px;
+       
+
+     
+        }
+    }
+}
+
+.participant-info {
+    padding: 5px;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 1.2;
+    letter-spacing: 0.3px;
+
+
+
+    &__role {
+        font-size: 15px;
+        font-weight: 400;
+        color: orange;
+
+        @media screen and (min-width: 1024px) {
+            font-weight: 900;
+        }
+    }
+
+    &__role {
+        font-size: 15px;
+        font-weight: 400;
+        
+
+        @media screen and (min-width: 1024px) {
+            font-weight: 700;
+        }
+    }
+
+    
+    
+}
+
+
+
+
+
+
+

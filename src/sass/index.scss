@@ -6,14 +6,15 @@
 
 @import './components/btn';
 @import './components/pagination';
-
+@import './components/scroll';
 @import './header/header';
 @import './header/form';
 
+@import './header/headerLibrary';
+
 @import './main/main';
 
-@import './modal/modal';
+@import './modal.style/modal';
 
 @import './footer/footer';
-
- @import './headerLibrary';
+@import './footer/footer-modal';

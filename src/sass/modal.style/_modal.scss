@@ -1,0 +1,237 @@
+.modal {
+  width: 280px;
+  border-top: solid 20px transparent;
+  border-bottom: solid 20px transparent;
+
+  @include tablet {
+    width: 704px;
+  }
+  @include desktop {
+    width: 806px;
+  }
+}
+
+.modal-cointeiner {
+  position: relative;
+  width: 100%;
+  border-radius: 5px;
+
+  box-sizing: border-box;
+  padding: 48px 20px 40px 20px;
+  background-color: $white-text-color;
+
+  @include tablet {
+    padding: 40px 72px 40px 36px;
+    display: grid;
+    grid-template-columns: 264px 264px;
+    gap: 68px;
+  }
+  @include desktop {
+    grid-template-columns: 375px 391px;
+    gap: 16px;
+    padding: 40px 12px;
+  }
+}
+
+.modal-close {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border: none;
+  background-color: $white-text-color;
+  color: $black-text-color;
+  top: 8px;
+  right: 8px;
+  padding: 0;
+}
+
+.modal-img {
+  width: 100%;
+  height: 357px;
+  border-radius: 5px;
+
+  @include tablet {
+    height: 384px;
+  }
+  @include desktop {
+    height: 545px;
+  }
+}
+
+.modal-title {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.15;
+  color: $black-text-color;
+  margin: 20px 0;
+  @include tablet {
+    margin: 0 0 20px 0;
+    height: 20px;
+  }
+  @include desktop {
+    font-size: 30px;
+    line-height: 1.167;
+    height: 31px;
+  }
+}
+
+.modal-list {
+  display: grid;
+  gap: 8px;
+  align-items: center;
+}
+
+.modal-item {
+  display: grid;
+  grid-template-columns: 69px auto;
+  grid-column-gap: 39px;
+  @include desktop {
+    grid-column-gap: 83px;
+  }
+}
+
+.modal-text {
+  font-weight: 500;
+  display: flex;
+  font-size: 12px;
+  line-height: 1.33;
+  color: #8c8c8c;
+}
+
+.modal-texting {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  color: $black-text-color;
+}
+
+.modal-rating-color {
+  background-color: $hover-rating-color;
+  color: $white-text-color;
+  width: 36px;
+  height: 16px;
+  border-radius: 5px;
+  box-sizing: border-box;
+  padding: 1px 9.5px;
+}
+
+.modal-heading {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  margin: 20px 0 8px;
+  text-transform: uppercase;
+}
+
+.modal-text-p {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  overflow: auto;
+}
+
+.modal-cointainer-btn {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 20px;
+  @include tablet {
+    grid-template-columns: 125.03px 125.03px;
+    grid-column-gap: 14.94px;
+  }
+  @include desktop {
+    grid-template-columns: 136px 136px;
+    grid-column-gap: 15px;
+    padding-left: 8px;
+  }
+}
+
+.modal-btn {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  height: 44px;
+  box-sizing: border-box;
+  border: 1px solid $black-text-color;
+  background: $white-text-color;
+  border-radius: 5px;
+  padding: 13px 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  color: $black-text-color;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  transition: all 0.25s;
+  @include tablet {
+    padding: 14px 7.35px 12px;
+  }
+  @include desktop {
+    padding: 14px 8px 12px 8px;
+  }
+}
+
+.modal-btn:hover {
+  background-color: #ff6b01;
+  border: 1px solid #ff6b01;
+  color: $white-text-color;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  // @include tablet {
+  //   padding: 14px 9.19px 12px;
+  // }
+  // @include desktop {
+  //   padding: 14px 10px 12px 10px;
+  // }
+}
+
+.modal-btn.active {
+  background-color: #ff6b01;
+  border: 1px solid #ff6b01;
+  color: $white-text-color;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.modal-btn.disabled {
+  background-color: silver;
+  border: 1px solid $black-text-color;
+  color: $black-text-color;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+.basicLightbox.basicLightbox--visible {
+  align-items: flex-start;
+  @include tablet {
+    align-items: center;
+  }
+  @include desktop {
+    align-items: center;
+  }
+}
+
+.trailer-btn {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  color: white;
+  text-transform: uppercase;
+  border-radius: 5px;
+  background-color: #ff6b01;
+
+  &:hover {
+    color: #ff6b01;
+    background-color: white;
+  }
+}
+
+.modal-thumb-img {
+  position: relative;
+}
+
+.modal-close {
+  transition: transform 0.25s;
+}
+.modal-close:hover {
+  transform: rotate(90deg);
+}
