@@ -2,7 +2,9 @@ import { refs } from './refs';
 
 import './scroll';
 import './markup/libraryMarkup';
+
 import { libraryFetch } from './markup/libraryMarkup';
+import { onFilmClick } from './render/rendermodal';
 
 const onHeaderBtnsClick = e => {
   const btnType = e.target.dataset.type;
@@ -18,3 +20,5 @@ const onHeaderBtnsClick = e => {
 };
 
 refs.lybraryBtnsWrap.addEventListener('click', onHeaderBtnsClick);
+
+refs.lybraryGallery.addEventListener('click', onFilmClick);

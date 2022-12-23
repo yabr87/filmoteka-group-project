@@ -8,6 +8,7 @@ let searchTerm = '';
 const movieService = new MovieService();
 
 const searchOnPaginClick = evt => {
+  Loading.hourglass(refs.loadOptions);
   movieService.page = evt.page;
 
   refs.mainLibrary.innerHTML = '';
@@ -16,6 +17,7 @@ const searchOnPaginClick = evt => {
       'beforeend',
       createGalleryMarckup(r.results)
     );
+    Loading.remove();
   });
 };
 
