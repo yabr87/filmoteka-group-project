@@ -11,7 +11,7 @@ export const libraryFetch = type => {
   getCurrentUser().then(r => {
     if (!r) {
       console.log(r);
-      Notiflix.Notify.failure('Log in first!');
+      Notiflix.Notify.failure('Log in first!', refs.mesageOption);
       return;
     }
   });

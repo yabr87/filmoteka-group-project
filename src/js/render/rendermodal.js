@@ -3,11 +3,13 @@ import Notiflix from 'notiflix';
 
 import { refs } from '../refs';
 import { MovieService } from '../fetchservice';
-import { getCurrentUser, getUserData } from '../firebase';
+import { getCurrentUser, getUserData, manageUserData } from '../firebase';
 import closeBtn from '../../images/close.svg';
 
 import * as basicLightbox from 'basiclightbox';
 import 'basiclightbox/dist/basicLightbox.min.css';
+import { async } from '@firebase/util';
+import { checkPoster } from '../components/checkposter';
 
 const movieService = new MovieService();
 
@@ -85,8 +87,8 @@ async function markupModal(film) {
 
   const ifUserSignin = await getCurrentUser();
 
-  console.log(genres);
-  console.log(videos.results);
+  // console.log(genres);
+  console.log(videos.results.length);
   const filmGenres = genres.map(genre => genre.name).join(', ');
 
   let markup = `<div class="modal">
@@ -95,8 +97,12 @@ async function markupModal(film) {
   
   <button class="modal-close" data-modal-close><img src="${closeBtn}" alt="button-close"></button>
     <div class="modal-thumb-img">
-      <button type="button" class="trailer-btn">trailer</button>
-      <img class="modal-img" src="https://image.tmdb.org/t/p/w300${poster_path}" alt="film ${title}">
+      <button type="button" class="trailer-btn ${
+        videos.results.length ? '' : 'is-hidden'
+      }">trailer</button>
+      <img class="modal-img" src="${checkPoster(
+        poster_path
+      )}" alt="film ${title}">
     </div>
     <div class="modal-thumb-text">
       <h2 class="modal-title">${title}</h2>
@@ -145,7 +151,7 @@ async function markupModal(film) {
 
 function murkupTrailer({ videos }) {
   const filmTrailer = videos.results.map(video => video.key);
-
+  console.log(filmTrailer);
   let markup = `<iframe
   width="560"
   height="315"
@@ -153,22 +159,30 @@ function murkupTrailer({ videos }) {
   frameborder="0"
   allowfullscreen
   ></iframe>`;
+
   return markup;
 }
 
 function onBtnQueClick(event) {
   if (event.target.classList.contains('disabled')) {
-    Notiflix.Notify.failure('Log in first!', {
-      showOnlyTheLastOne: true,
-      clickToClose: true,
-    });
+    Notiflix.Notify.failure('Log in first!', refs.mesageOption);
     return;
   }
 }
 
-function onBtnWatchedClick(event) {
+async function onBtnWatchedClick(event) {
   if (event.target.classList.contains('disabled')) {
-    Notiflix.Notify.failure('Log in first!', );
+    Notiflix.Notify.failure('Log in first!', refs.mesageOption);
     return;
   }
+
+  const x = await getUserData();
+
+  if (x.Watched.includes(event.target.dataset.id)) {
+    console.log("такий фільм є")
+    
+  } else {
+    console.log('такого немає');
+  }
+  
 }
