@@ -5,6 +5,7 @@ import './markup/libraryMarkup';
 
 import { libraryFetch } from './markup/libraryMarkup';
 import { onFilmClick } from './render/rendermodal';
+import { footerModal } from './render/footer-modal';
 
 const onHeaderBtnsClick = e => {
   const btnType = e.target.dataset.type;
