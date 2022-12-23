@@ -1,1 +1,133 @@
+.header {
+  padding-top: 40px;
+  height: 230px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url('/src/images/header-background-mobile.png');
 
+  @include retina {
+    background-image: url('/src/images/header-background-mobile@2x.png');
+  }
+
+  @include tablet {
+    height: 216px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url('/src/images/header-background-tablet.png');
+
+    @include retina {
+      background-image: url('/src/images/header-background-tablet@2x.png');
+    }
+  }
+
+  @include desktop {
+    background-image: url('/src/images/header-background-desktop.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    @include retina {
+      background-image: url('/src/images/header-background-desktop@2x.png');
+    }
+  }
+}
+
+.header-container-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 55px;
+
+  @include tablet {
+    margin-bottom: 40px;
+  }
+}
+// .input {
+//   width: 100%;
+// }
+
+.search-form {
+  margin-top: 49px;
+  margin-bottom: 65px;
+  display: flex;
+  justify-content: center;
+}
+
+.header-container-icon {
+  display: flex;
+  align-items: center;
+}
+
+.nav-links-list {
+  display: flex;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.17;
+  text-transform: uppercase;
+  color: var(--mainWhite);
+  align-items: center;
+}
+.current {
+  color: var(--accent-color);
+}
+.hover-line::after {
+  display: block;
+  content: '';
+
+  width: 34px;
+  height: 3px;
+
+  background-color: #ff001b;
+  //   border-radius: 0.5px;
+}
+
+.nav-links-item:not(:last-child) {
+  margin-right: 40px;
+}
+
+.header-container-icon {
+  align-items: center;
+  display: flex;
+}
+
+.logo-text {
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 1.17;
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .logo-text {
+    display: block;
+  }
+  .input {
+    width: 336px;
+  }
+  .form-item-icon {
+    margin-right: 8px;
+  }
+}
+
+.logo-link {
+  color: var(--mainWhite);
+  align-items: center;
+  transition: color 0.35s linear;
+  display: flex;
+}
+
+.logo-link:hover {
+  color: var(--accent);
+}
+
+@media screen and (min-width: 1280px) {
+  .form-item-icon {
+    margin-right: 10px;
+  }
+  .input {
+    width: 394px;
+  }
+}
