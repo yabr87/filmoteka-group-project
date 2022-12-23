@@ -2,9 +2,22 @@ import { refs } from './refs';
 import { MovieService } from './fetchservice';
 import { createGalleryMarckup } from './markup/homepage';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
+import { paginationMainPage } from './paginationhomepage';
 
 let searchTerm = '';
 const movieService = new MovieService();
+
+const searchOnPaginClick = evt => {
+  movieService.page = evt.page;
+
+  refs.mainLibrary.innerHTML = '';
+  movieService.search().then(r => {
+    refs.mainLibrary.insertAdjacentHTML(
+      'beforeend',
+      createGalleryMarckup(r.results)
+    );
+  });
+};
 
 refs.form.addEventListener('submit', handleSubmit);
 
@@ -16,9 +29,12 @@ async function handleSubmit(event) {
     return;
   }
 
+  movieService.searchQuery = searchTerm;
+
   Loading.hourglass(refs.loadOptions);
-  let data = await movieService.search(searchTerm, 1);
+  let data = await movieService.search();
   Loading.remove();
+
   if (
     data === null ||
     data === undefined ||
@@ -32,6 +48,8 @@ async function handleSubmit(event) {
     refs.serchError.classList.add('is-hidden');
   }
   cleareOldSerch();
+
+  paginationMainPage(data.total_pages, searchOnPaginClick);
 
   refs.mainLibrary.insertAdjacentHTML(
     'beforeend',
