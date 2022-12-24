@@ -1,7 +1,8 @@
 .modal {
+  overflow-y: auto;
+  max-height: 95vh;
   width: 280px;
-  border-top: solid 20px transparent;
-  border-bottom: solid 20px transparent;
+  border-radius: 5px;
 
   @include tablet {
     width: 704px;
@@ -14,8 +15,6 @@
 .modal-cointeiner {
   position: relative;
   width: 100%;
-  border-radius: 5px;
-
   box-sizing: border-box;
   padding: 48px 20px 40px 20px;
   background-color: $white-text-color;
@@ -190,16 +189,6 @@
   color: $black-text-color;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
     rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
-}
-
-.basicLightbox.basicLightbox--visible {
-  align-items: flex-start;
-  @include tablet {
-    align-items: center;
-  }
-  @include desktop {
-    align-items: center;
-  }
 }
 
 .trailer-btn {

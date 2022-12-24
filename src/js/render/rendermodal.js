@@ -28,7 +28,7 @@ export async function onFilmClick(event) {
 
   const modalLightbox = basicLightbox.create(modalMurkup, {
     onShow: () => {
-      document.body.style.position = 'fixed';
+      document.body.style.overflow = 'hidden';
       // modalLightbox.element()
       //   .querySelector('.js-btn-queue')
       //   .addEventListener('click', onBtnQueClick);
@@ -48,7 +48,7 @@ export async function onFilmClick(event) {
       document.addEventListener('keydown', onModalLightboxClose);
     },
     onClose: () => {
-      document.body.style.position = 'static';
+      document.body.style.overflow = 'auto';
       document.removeEventListener('keydown', onModalLightboxClose);
     },
   });
