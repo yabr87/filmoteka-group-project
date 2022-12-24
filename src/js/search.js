@@ -9,15 +9,15 @@ const movieService = new MovieService();
 
 const searchOnPaginClick = evt => {
   Loading.hourglass(refs.loadOptions);
-  movieService.page = evt.page;
 
+  movieService.page = evt.page;
   refs.mainLibrary.innerHTML = '';
   movieService.search().then(r => {
     refs.mainLibrary.insertAdjacentHTML(
       'beforeend',
       createGalleryMarckup(r.results)
     );
-    Loading.remove();
+    Loading.remove(500);
   });
 };
 

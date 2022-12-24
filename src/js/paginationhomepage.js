@@ -2,10 +2,12 @@ import { refs } from './refs';
 import Pagination from 'tui-pagination';
 import { MovieService } from './fetchservice';
 import { createGalleryMarckup } from './markup/homepage';
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
 
 const movieService = new MovieService();
 
 export const mainPageOnPaginClick = evt => {
+  Loading.hourglass(refs.loadOptions);
   movieService.page = evt.page;
   refs.mainLibrary.innerHTML = '';
   movieService.getTrending().then(r => {
@@ -13,6 +15,7 @@ export const mainPageOnPaginClick = evt => {
       'beforeend',
       createGalleryMarckup(r.results)
     );
+    Loading.remove();
   });
 };
 

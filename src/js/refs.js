@@ -11,7 +11,7 @@ export const refs = {
   main: document.querySelector('main'),
   loadOptions: {
     clickToClose: true,
-    svgSize: '200px',
+    svgSize: '150px',
     svgColor: '#FF6B01',
   },
   paginationContainer: document.querySelector('#paginationhomepage'),
