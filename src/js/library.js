@@ -6,6 +6,17 @@ import { libraryFetch } from './markup/libraryMarkup';
 import { onFilmClick } from './render/rendermodal';
 import { footerModal } from './render/footer-modal';
 import { MakeAuthBtn } from './firebase';
+import { refs } from './refs';
+import { Loading } from 'notiflix';
+
+const onEmptyLibraryPageLoading = () => {
+  Loading.hourglass('Add film to the list first', refs.loadOptions);
+  Loading.remove(5000);
+  setTimeout(() => {
+    return (location.href = 'index.html');
+  }, 5000);
+};
+onEmptyLibraryPageLoading();
 
 import { Loading } from 'notiflix';
 
