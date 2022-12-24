@@ -1,5 +1,5 @@
 const openBtnEl = document.querySelector(".footer__button")
-const closeBtnEl = document.querySelector(".modal-title")
+const closeBtnEl = document.querySelector(".modal-close-footer")
 const modalOurTeamEl = document.querySelector(".backdrop-team")
 const backdrop = document.querySelector(".backdrop-team")
 openBtnEl.addEventListener("click", openModal)
