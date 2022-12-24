@@ -13,4 +13,10 @@ export const refs = {
     svgColor: '#FF6B01',
   },
   paginationContainer: document.querySelector('#paginationhomepage'),
+  lybraryGallery: document.querySelector('.library-gallery'),
+  lybraryBtnsWrap: document.querySelector('.library-btns'),
+  mesageOption: {
+    showOnlyTheLastOne: true,
+    clickToClose: true,
+  },
 };

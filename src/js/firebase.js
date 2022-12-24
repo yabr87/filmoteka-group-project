@@ -154,7 +154,6 @@ export const manageUserData = (id, type) => {
 export const getUserData = async () => {
   return getCurrentUser().then(async r => {
     if (!r) {
-      Notiflix.Notify.info('Log in first');
       return;
     }
 

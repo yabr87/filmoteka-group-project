@@ -2,8 +2,21 @@ import { refs } from './refs';
 import Pagination from 'tui-pagination';
 import { MovieService } from './fetchservice';
 import { createGalleryMarckup } from './markup/homepage';
-const moviesService = new MovieService();
-export function paginationMainPage(totalPage) {
+
+const movieService = new MovieService();
+
+export const mainPageOnPaginClick = evt => {
+  movieService.page = evt.page;
+  refs.mainLibrary.innerHTML = '';
+  movieService.getTrending().then(r => {
+    refs.mainLibrary.insertAdjacentHTML(
+      'beforeend',
+      createGalleryMarckup(r.results)
+    );
+  });
+};
+
+export function paginationMainPage(totalPage, onPaginationClickCallback) {
   const optionsMainPagination = {
     totalItems: totalPage,
     itemsPerPage: 1,
@@ -30,19 +43,11 @@ export function paginationMainPage(totalPage) {
         '</a>',
     },
   };
+
   const pagination = new Pagination(
     refs.paginationContainer,
     optionsMainPagination
   );
-  pagination.on('beforeMove', evt => {
-    moviesService.page = evt.page;
-    console.log(moviesService.page);
-    refs.mainLibrary.innerHTML = '';
-    moviesService.getTrending().then(r => {
-      refs.mainLibrary.insertAdjacentHTML(
-        'beforeend',
-        createGalleryMarckup(r.results)
-      );
-    });
-  });
+
+  pagination.on('beforeMove', onPaginationClickCallback);
 }
