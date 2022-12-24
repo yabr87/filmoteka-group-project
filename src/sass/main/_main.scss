@@ -18,11 +18,9 @@
   flex-wrap: wrap;
   gap: 20px;
 
-  padding-top: 20px;
   padding-bottom: 40px;
 
   @media screen and (min-width: 768px) {
-    padding-top: 60px;
     padding-bottom: 60px;
     gap: 32px;
   }
@@ -50,31 +48,24 @@
 
   &:hover,
   &:focus {
-    // box-shadow: -10px -10px 20px $white-text-color,
-    //   10px 10px 20px rgba(72, 121, 150, 0.1),
-    //   5px 5px 10px rgba(72, 121, 150, 0.25), -5px -5px 10px $white-text-color;
-    transform: scale(1.025);
+    transform: scale(1.015);
   }
 
-  // transition: box-shadow $duration $timing-function;
   transition: transform $duration $timing-function;
 }
 
 .main-film-poster {
-  width: 100%;
-
+  // width: 100%;
   border-radius: 5px;
   margin-bottom: 10px;
 
   @media screen and (min-width: 768px) {
-    // width: 336px;
-    height: 488px;
+    // height: 488px;
     margin-bottom: 8px;
   }
 
   @media screen and (min-width: 1280px) {
-    // width: 394px;
-    height: 574px;
+    // height: 574px;
     margin-bottom: 12px;
   }
 }
