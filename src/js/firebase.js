@@ -163,7 +163,6 @@ export const getUserData = async () => {
     try {
       const snapshot = await get(child(dbRef, `users/${uid}`));
       if (snapshot.val() === null) {
-        Notiflix.Notify.failure('Your storage is empty');
         return null;
       } else {
         return snapshot.val();

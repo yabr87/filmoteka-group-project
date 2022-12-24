@@ -7,12 +7,13 @@ const movieService = new MovieService();
 
 export const libraryFetch = type => {
   getUserData().then(r => {
-    if (r) {
-      console.log(r);
+    if (r[type]) {
       Promise.all(movieService.fetchByMultipleIds(r[type])).then(r => {
         document.body.setAttribute('data-page', type);
         createLybraryMarckup(r);
       });
+    } else {
+      refs.lybraryGallery.innerHTML = '';
     }
   });
 };

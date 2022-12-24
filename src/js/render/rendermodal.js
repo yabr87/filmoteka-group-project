@@ -88,9 +88,15 @@ async function markupModal(film) {
   } = film;
 
   const userData = await getUserData();
+  let isFilmInWatched = false;
+  let isFilmInQueue = false;
 
-  const isFilmInWatched = await userData.Watched.includes(id.toString());
-  const isFilmInQueue = await userData.Queue.includes(id.toString());
+  if (userData && userData.Watched) {
+    isFilmInWatched = await userData.Watched.includes(id.toString());
+  }
+  if (userData && userData.Queue) {
+    isFilmInQueue = await userData.Queue.includes(id.toString());
+  }
 
   const ifUserSignin = await getCurrentUser();
 
