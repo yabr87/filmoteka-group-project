@@ -7,6 +7,10 @@ export const refs = {
   scrollToTopBtn: document.querySelector('#scrollToTopBtn'),
   rootElement: document.documentElement,
   window,
+  inputEl: document.querySelector('#slider'),
+  main: document.querySelector('main'),
+  h2: document.querySelectorAll('h2'),
+  a: document.querySelectorAll('a'),
   loadOptions: {
     clickToClose: true,
     svgSize: '200px',
