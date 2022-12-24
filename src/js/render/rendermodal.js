@@ -42,7 +42,7 @@ export async function onFilmClick(event) {
       modalLightbox.element().querySelector('.trailer-btn').onclick =
         showTrailer;
 
-      modalLightbox.element().querySelector('.modal-close').onclick =
+      modalLightbox.element().querySelector('.modal-close-btn').onclick =
         onModalLightboxClose;
 
       document.addEventListener('keydown', onModalLightboxClose);
@@ -106,7 +106,7 @@ async function markupModal(film) {
 
   <div class="modal-cointeiner">
   
-  <button class="modal-close" data-modal-close><img src="${closeBtn}" alt="button-close"></button>
+  <button class="modal-close-btn" data-modal-close><img src="${closeBtn}" alt="button-close"></button>
     <div class="modal-thumb-img">
       <button type="button" class="trailer-btn ${
         videos.results.length ? '' : 'is-hidden'

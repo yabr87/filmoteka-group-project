@@ -32,7 +32,7 @@
   }
 }
 
-.modal-close {
+.modal-close-btn {
   position: absolute;
   width: 30px;
   height: 30px;
@@ -42,6 +42,7 @@
   top: 8px;
   right: 8px;
   padding: 0;
+  transition: transform 0.25s;
 }
 
 .modal-img {
@@ -210,9 +211,6 @@
   position: relative;
 }
 
-.modal-close {
-  transition: transform 0.25s;
-}
-.modal-close:hover {
+.modal-close-btn:hover {
   transform: rotate(90deg);
 }
