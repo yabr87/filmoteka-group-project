@@ -7,7 +7,7 @@ import {
   searchOnPaginClick,
 } from '../paginationhomepage';
 
-async function renderhomepage() {
+export async function renderhomepage() {
   const movieService = new MovieService();
 
   const data = await movieService.getTrending();
