@@ -66,12 +66,10 @@
   margin: 20px 0;
   @include tablet {
     margin: 0 0 20px 0;
-    height: 20px;
   }
   @include desktop {
     font-size: 30px;
     line-height: 1.167;
-    height: 31px;
   }
 }
 
@@ -165,10 +163,10 @@
     rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
   transition: all 0.25s;
   @include tablet {
-    padding: 14px 7.35px 12px;
+    padding: 14px 0px;
   }
   @include desktop {
-    padding: 14px 8px 12px 8px;
+    padding: 14px 0px;
   }
 }
 
@@ -177,12 +175,6 @@
   border: 1px solid #ff6b01;
   color: $white-text-color;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-  // @include tablet {
-  //   padding: 14px 9.19px 12px;
-  // }
-  // @include desktop {
-  //   padding: 14px 10px 12px 10px;
-  // }
 }
 
 .modal-btn.active {
