@@ -116,7 +116,7 @@ async function markupModal(film) {
       )}" alt="film ${title}">
     </div>
     <div class="modal-thumb-text">
-      <h2 class="modal-title">${title}</h2>
+      <h2 class="modal-film-title">${title}</h2>
       <ul class="modal-list">
 
         <li class="modal-item">
