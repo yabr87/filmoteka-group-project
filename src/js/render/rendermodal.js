@@ -48,7 +48,7 @@ export async function onFilmClick(event) {
       document.addEventListener('keydown', onModalLightboxClose);
     },
     onClose: () => {
-      document.body.style.overflow = 'auto';
+      document.body.style.overflow = 'visible';
       document.removeEventListener('keydown', onModalLightboxClose);
     },
   });

@@ -1,21 +1,14 @@
-.modal-title {
+.modal-close-footer {
   position: absolute;
-  // top: 15px;
-  right: 20px;
-  // height: 32px;
-  // width: 32px;
-  display: flex;
-  align-items: center;
-  //   background-color: #f7f7f7;
-  // border: 1px solid rgba(0, 0, 0, 0.1);
+  width: 30px;
+  height: 30px;
+  border: none;
+  background-color: $white-text-color;
+  color: $black-text-color;
+  top: 8px;
+  right: 8px;
+  padding: 0;
   transition: transform 0.25s;
-  // border-radius: 50%;
-  cursor: pointer;
-
-  // width: 14px;
-  // height: 14px;
-  // left: 8px;
-  // top: 22px;
 
   @media screen and (max-width: 1023px) {
     width: 30px;
@@ -141,7 +134,8 @@
     border-top-left-radius: 10px;
 
     @media screen and (min-width: 768px) {
-      height: 185px;
+      width: 255px;
+      height: 255px;
     }
 
     @media screen and (min-width: 1024px) {
