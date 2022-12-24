@@ -5,12 +5,20 @@ $black-text-color: #000000;
 $hover-rating-color: #ff6b01;
 $button-header-library: rgba(255, 107, 1, 0.6);
 $duration: 250ms;
-$timing-function: cubic-bezier(0.4, 0, 0.2, 1); ;
+$timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
 :root {
-    --accent: #ff6b01;
-    --mainWhite: #ffffff;
-    --mainBlack: #000000;
-    --paginationTextColor: #000000;
-    --body: #e9e9e9; //#292929 -для боди
+  --accent: #ff6b01;
+  --mainWhite: #ffffff;
+  --mainBlack: #000000;
+  --paginationTextColor: #000000;
+  --body: #e9e9e9; //#292929 -для боди
+}
+.theme-light {
+  background-color: var(--body);
+  color: #000000;
+}
+.theme-dark {
+  background-color: #2a2c2d;
+  color: #ffffff;
 }

@@ -38,13 +38,12 @@
 .tui-pagination .tui-page-btn {
   display: inline-block;
   position: relative;
-  width: 45px;
-  padding: 12px 0 12px;
-  margin: 0 2px;
-  color: #000000;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 1.33;
+  width: 40px;
+  padding: 14px 0 12px;
+  margin-left: 0;
+  font-size: 12px;
+  font-weight: normal;
+  line-height: 1;
   text-decoration: none;
   vertical-align: middle;
   // border: 1px solid #ddd;
@@ -60,7 +59,7 @@
   }
 
 .tui-pagination .tui-page-btn:hover {
-  background-color: #f4f4f4;
+  background-color: rgba(255, 107, 1, 0.6);
 }
 
 .tui-pagination .tui-is-selected,

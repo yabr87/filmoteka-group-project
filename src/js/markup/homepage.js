@@ -13,7 +13,7 @@ export function createGalleryMarckup(response) {
             alt="${title}"
           class="main-film-poster"
           />
-          <h2 class="main-film-name">${title}</h2>
+          <h2 class="main-film-name theme-light">${title}</h2>
           <p class="main-film-description" data-id="${id}">
             <span class="main-film-genres">${movieService
               .getGenresByIds(genre_ids)
