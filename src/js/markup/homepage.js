@@ -18,7 +18,9 @@ export function createGalleryMarckup(response) {
             <span class="main-film-genres">${movieService
               .getGenresByIds(genre_ids)
               .join(', ')}</span> |
-            <span class="main-film-premiere">${release_date.slice(0, 4)}</span>
+            <span class="main-film-premiere">${
+              release_date ? release_date.slice(0, 4) : ''
+            }</span>
           </p>
         </li>
         `;

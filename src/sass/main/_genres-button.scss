@@ -3,7 +3,8 @@
   padding: 16px;
   display: flex;
   justify-content: center;
-  gap: 20px;
+  flex-wrap: wrap;
+  gap: 15px;
 }
 
 .genre-button {
@@ -19,6 +20,7 @@
   justify-content: center;
   border: 1px solid var(--mainBlack);
   color: var(--mainBlack);
+  background-color: transparent;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
     rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 
@@ -32,6 +34,7 @@
 }
 
 .active-genre {
+  border: 1px solid var(--accent);
   color: var(--mainWhite);
   background-color: var(--accent);
   transform: scale(1.15);

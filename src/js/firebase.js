@@ -46,10 +46,13 @@ const updateUserData = async (id, type, userId) => {
     await update(ref(db, 'users/' + userId), {
       [type]: [id],
     });
-    Notiflix.Notify.info(`Film has been added to your ${type} list`);
+    Notiflix.Notify.info(
+      `Film has been added to your ${type} list`,
+      refs.mesageOption
+    );
   } catch (error) {
     console.log(error);
-    Notiflix.Notify.failure('Something went wrong');
+    Notiflix.Notify.failure('Something went wrong', refs.mesageOption);
   }
 };
 
@@ -65,10 +68,13 @@ const toggleUserData = async (id, arr, type, userId) => {
       await update(ref(db, 'users/' + userId), {
         [type]: filteredIds,
       });
-      Notiflix.Notify.failure(`Film has been removed from your ${type} list`);
+      Notiflix.Notify.failure(
+        `Film has been removed from your ${type} list`,
+        refs.mesageOption
+      );
     } catch (error) {
       console.log(error);
-      Notiflix.Notify.failure('Something went wrong');
+      Notiflix.Notify.failure('Something went wrong', refs.mesageOption);
     }
   } else {
     idsArr.push(id);
@@ -77,7 +83,10 @@ const toggleUserData = async (id, arr, type, userId) => {
     await update(ref(db, 'users/' + userId), {
       [type]: idsArr,
     });
-    Notiflix.Notify.info(`Film has been added to your ${type} list`);
+    Notiflix.Notify.info(
+      `Film has been added to your ${type} list`,
+      refs.mesageOption
+    );
   }
 };
 
@@ -88,10 +97,13 @@ const createUserData = async (id, type, userId) => {
     await set(ref(db, 'users/' + userId), {
       [type]: [id],
     });
-    Notiflix.Notify.info(`Film has been added to your ${type} list`);
+    Notiflix.Notify.info(
+      `Film has been added to your ${type} list`,
+      refs.mesageOption
+    );
   } catch (error) {
     console.log(error);
-    Notiflix.Notify.failure('Something went wrong');
+    Notiflix.Notify.failure('Something went wrong', refs.mesageOption);
   }
 };
 
@@ -99,7 +111,7 @@ const createUserData = async (id, type, userId) => {
 
 export const logOut = async () => {
   await signOut(auth);
-  Notiflix.Notify.info("You've been signed out");
+  Notiflix.Notify.info("You've been signed out", refs.mesageOption);
 };
 
 // Залогінитись
@@ -108,10 +120,10 @@ export const authentificate = async () => {
   try {
     await signInWithPopup(auth, provider);
     renderBtn(true);
-    Notiflix.Notify.success('You succesfully logged in');
+    Notiflix.Notify.success('You succesfully logged in', refs.mesageOption);
   } catch (error) {
     console.log(error);
-    Notiflix.Notify.failure('Something went wrong');
+    Notiflix.Notify.failure('Something went wrong', refs.mesageOption);
   }
 };
 
@@ -169,7 +181,7 @@ export const getUserData = async () => {
       }
     } catch (error) {
       console.log(error);
-      Notiflix.Notify.failure('Something went wrong');
+      Notiflix.Notify.failure('Something went wrong', refs.mesageOption);
     }
   });
 };
@@ -179,8 +191,8 @@ export const getUserData = async () => {
 export const greet = () => {
   getCurrentUser(auth).then(r => {
     if (r === null) {
-      Notiflix.Notify.info('Please sign in');
-    } else Notiflix.Notify.success(`Hi ${r.displayName}`);
+      Notiflix.Notify.info('Please sign in', refs.mesageOption);
+    } else Notiflix.Notify.success(`Hi ${r.displayName}`, refs.mesageOption);
   });
 };
 
