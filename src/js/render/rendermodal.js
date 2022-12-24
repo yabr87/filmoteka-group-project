@@ -28,6 +28,7 @@ export async function onFilmClick(event) {
 
   const modalLightbox = basicLightbox.create(modalMurkup, {
     onShow: () => {
+      document.body.style.position = 'fixed';
       // modalLightbox.element()
       //   .querySelector('.js-btn-queue')
       //   .addEventListener('click', onBtnQueClick);
@@ -47,6 +48,7 @@ export async function onFilmClick(event) {
       document.addEventListener('keydown', onModalLightboxClose);
     },
     onClose: () => {
+      document.body.style.position = 'static';
       document.removeEventListener('keydown', onModalLightboxClose);
     },
   });
@@ -135,11 +137,11 @@ async function markupModal(film) {
         <button class="modal-btn js-btn-watched ${
           ifUserSignin ? '' : 'disabled'
         }" data-id="${id}"
-          data-type="Watched">remove to Watched</button>
+          data-type="Watched">add to Watched</button>
         <button class="modal-btn js-btn-queue ${
           ifUserSignin ? '' : 'disabled'
         }" data-id="${id}" data-type="Queue" 
-        >Remove to queue</button>
+        >add to queue</button>
       </div>
 
     </div>
