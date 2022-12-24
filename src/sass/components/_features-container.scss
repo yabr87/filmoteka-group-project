@@ -1,27 +1,12 @@
-// .features-container {
-//   display: flex;
-//   justify-content: space-between;
-//   align-items: center;
-//   gap: 4px;
-//   padding: 4px;
-// }
 .switcher-container {
   position: absolute;
-  top: -215px;
+  top: -260px;
   left: 20px;
 
   @include tablet {
-    top: -197px;
+    top: -245px;
     left: 32px;
   }
-  // display: flex;
-  // justify-content: flex-end;
-  // width: 50%;
-  // height: 50%;
-  // background: var(--color-secondary);
-  // flex-direction: column;
-  // justify-content: center;
-  // align-items: center;
 }
 
 /* The switch - the box around the slider */

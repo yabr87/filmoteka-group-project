@@ -26,9 +26,9 @@ export function paginationMainPage(totalPage, onPaginationClickCallback) {
     lastItemClassName: 'tui-last-child',
     usageStatistics: true,
     defaultTemplate: {
-      page: '<a href="#" class="tui-page-btn theme-light">{{page}}</a>',
+      page: '<a href="#" class="tui-page-btn ">{{page}}</a>',
       currentPage:
-        '<strong class="tui-page-btn theme-light tui-is-selected">{{page}}</strong>',
+        '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
       moveButton:
         '<a href="#" class="tui-page-btn tui-{{type}}">' +
         '<span class="tui-ico-{{type}}">{{type}}</span>' +
