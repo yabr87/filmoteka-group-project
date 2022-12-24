@@ -13,4 +13,10 @@
       <path d="m26.667 7.303-1.97-1.97-7.808 7.808-7.808-7.808-1.97 1.97 7.808 7.808-7.808 7.808 1.97 1.97 7.808-7.808 7.808 7.808 1.97-1.97-7.808-7.808 7.808-7.808z"/>
     <symbol id="icon-check" viewBox="0 0 42 32">
   </defs>
+  <symbol id="icon-arrow-l" viewBox="0 0 32 32">
+      <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.666" d="M25.334 16h-18.668M16 25.334l-9.334-9.334 9.334-9.334"></path>
+  </symbol>
+  <symbol id="icon-arrow-r" viewBox="0 0 32 32">
+      <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.666" d="M6.666 16h18.668M16 25.334l9.334-9.334-9.334-9.334"></path>
+  </symbol>
 </svg>
