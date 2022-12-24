@@ -1,9 +1,9 @@
 body {
   font-family: $font-main;
-  background-color: var(--body);
+  // background-color: var(--body);
   min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 p,
 ul,

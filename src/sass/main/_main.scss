@@ -9,6 +9,10 @@
   }
 }
 
+.main-section {
+  position: relative;
+}
+
 .main-library-list {
   display: flex;
   flex-wrap: wrap;
@@ -80,6 +84,8 @@
   font-size: 12px;
   line-height: 1.16;
   text-transform: uppercase;
+  border-radius: 5px;
+  padding: 0 3px;
 
   color: #000;
 
@@ -96,7 +102,7 @@
   font-weight: 500;
   font-size: 12px;
   line-height: 1.33;
-
+  padding: 2px 3px 0 3px;
   color: $color-accent;
 
   @media screen and (min-width: 1280px) {

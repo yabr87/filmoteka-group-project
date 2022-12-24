@@ -26,7 +26,7 @@ refs.form.addEventListener('submit', handleSubmit);
 async function handleSubmit(event) {
   event.preventDefault();
   searchTerm = event.target.searchQueue.value.trim();
-  if (searchTerm === '' || searchTerm.length <= 2) {
+  if (searchTerm === '') {
     refs.serchError.classList.remove('is-hidden');
     return;
   }
