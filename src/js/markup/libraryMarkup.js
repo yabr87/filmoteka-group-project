@@ -1,24 +1,16 @@
 import { refs } from '../refs';
-import { getCurrentUser, getUserData } from '../firebase';
+import { getUserData } from '../firebase';
 import { MovieService, MovieService } from '../fetchservice';
 import { checkPoster } from '../components/checkposter';
-
-import Notiflix from 'notiflix';
 
 const movieService = new MovieService();
 
 export const libraryFetch = type => {
-  getCurrentUser().then(r => {
-    if (!r) {
-      console.log(r);
-      Notiflix.Notify.failure('Log in first!', refs.mesageOption);
-      return;
-    }
-  });
-
   getUserData().then(r => {
     if (r) {
+      console.log(r);
       Promise.all(movieService.fetchByMultipleIds(r[type])).then(r => {
+        document.body.setAttribute('data-page', type);
         createLybraryMarckup(r);
       });
     }
@@ -56,5 +48,3 @@ function createLybraryMarckup(filmsArr) {
   refs.lybraryGallery.innerHTML = '';
   refs.lybraryGallery.insertAdjacentHTML('beforeend', markup.join(''));
 }
-
-libraryFetch('Queue');

@@ -5,6 +5,7 @@ import { refs } from '../refs';
 import { MovieService } from '../fetchservice';
 import { getCurrentUser, getUserData, manageUserData } from '../firebase';
 import closeBtn from '../../images/close.svg';
+import { libraryFetch } from '../markup/libraryMarkup';
 
 import * as basicLightbox from 'basiclightbox';
 import 'basiclightbox/dist/basicLightbox.min.css';
@@ -33,11 +34,10 @@ export async function onFilmClick(event) {
       //   .querySelector('.js-btn-queue')
       //   .addEventListener('click', onBtnQueClick);
 
-      modalLightbox.element().querySelector('.js-btn-queue').onclick =
-        onBtnQueClick;
-
-      modalLightbox.element().querySelector('.js-btn-watched').onclick =
-        onBtnWatchedClick;
+      modalLightbox
+        .element()
+        .querySelector('.modal-cointainer-btn')
+        .addEventListener('click', onModalBtnsClick);
 
       modalLightbox.element().querySelector('.trailer-btn').onclick =
         showTrailer;
@@ -87,10 +87,13 @@ async function markupModal(film) {
     id,
   } = film;
 
+  const userData = await getUserData();
+
+  const isFilmInWatched = await userData.Watched.includes(id.toString());
+  const isFilmInQueue = await userData.Queue.includes(id.toString());
+
   const ifUserSignin = await getCurrentUser();
 
-  // console.log(genres);
-  console.log(videos.results.length);
   const filmGenres = genres.map(genre => genre.name).join(', ');
 
   let markup = `<div class="modal">
@@ -137,11 +140,14 @@ async function markupModal(film) {
         <button class="modal-btn js-btn-watched ${
           ifUserSignin ? '' : 'disabled'
         }" data-id="${id}"
-          data-type="Watched">add to Watched</button>
+          data-type="Watched">${
+            isFilmInWatched ? 'Remove' : 'add to Watched'
+          }</button>
+
         <button class="modal-btn js-btn-queue ${
           ifUserSignin ? '' : 'disabled'
         }" data-id="${id}" data-type="Queue" 
-        >add to queue</button>
+        >${isFilmInQueue ? 'Remove' : 'add to Queue'}</button>
       </div>
 
     </div>
@@ -165,31 +171,46 @@ function murkupTrailer({ videos }) {
   return markup;
 }
 
-async function onBtnQueClick(event) {
-  if (event.target.classList.contains('disabled')) {
-    Notiflix.Notify.failure('Log in first!', refs.mesageOption);
+async function onModalBtnsClick(event) {
+  const btnType = event.target.dataset.type;
+  const filmId = event.target.dataset.id;
+  const currentPage = document.body.dataset.page;
+
+  if (!btnType) {
     return;
   }
-  const userData = await getUserData();
-
-  if (userData.Watched.includes(event.target.dataset.id)) {
-    console.log('такий фільм є');
-  } else {
-    console.log('такого немає');
-  }
-}
-
-async function onBtnWatchedClick(event) {
   if (event.target.classList.contains('disabled')) {
     Notiflix.Notify.failure('Log in first!', refs.mesageOption);
     return;
   }
 
-  const userData = await getUserData();
+  if (btnType === 'Queue') {
+    manageUserData(filmId, btnType);
 
-  if (userData.Watched.includes(event.target.dataset.id)) {
-    console.log('такий фільм є');
-  } else {
-    console.log('такого немає');
+    if (event.target.textContent === 'Remove') {
+      event.target.textContent = 'Add to Queue';
+    } else {
+      event.target.textContent = 'Remove';
+    }
+
+    if (currentPage === 'Queue') {
+      setTimeout(() => {
+        libraryFetch(btnType);
+      }, 1000);
+    }
+  }
+  if (btnType === 'Watched') {
+    manageUserData(filmId, btnType);
+    if (event.target.textContent === 'Remove') {
+      event.target.textContent = 'Add to Watched';
+    } else {
+      event.target.textContent = 'Remove';
+    }
+
+    if (currentPage === 'Watched') {
+      setTimeout(() => {
+        libraryFetch(btnType);
+      }, 1000);
+    }
   }
 }
