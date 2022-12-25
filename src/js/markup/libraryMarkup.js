@@ -9,21 +9,18 @@ export const libraryFetch = type => {
   getCurrentUser().then(r => {
     if (r) {
       getUserData().then(r => {
-        if (r) {
-          if (r[type]) {
-            Promise.all(movieService.fetchByMultipleIds(r[type])).then(r => {
-              createLybraryMarckup(r);
-            });
-          }
-          if (!r[type]) {
-            refs.lybraryGallery.innerHTML = '';
-            makeEmptyStorageError();
-          } else {
-            refs.lybraryGallery.innerHTML = '';
-          }
+        if (r[type]) {
+          Promise.all(movieService.fetchByMultipleIds(r[type])).then(r => {
+            document.body.setAttribute('data-page', type);
+            makeCurrentBtn();
+            createLybraryMarckup(r);
+          });
         }
-        if (!r) {
+        if (!r[type]) {
+          refs.lybraryGallery.innerHTML = '';
           makeEmptyStorageError();
+        } else {
+          refs.lybraryGallery.innerHTML = '';
         }
       });
     }
@@ -68,11 +65,10 @@ const createLybraryMarckup = filmsArr => {
   refs.lybraryGallery.insertAdjacentHTML('beforeend', markup.join(''));
 };
 
-export const makeLogInError = () => {
+const makeLogInError = () => {
   const markup =
     '<p class="library-error">Please log in to use your Library!</p>';
 
-  refs.lybraryGallery.innerHTML = '';
   refs.lybraryError.innerHTML = '';
   refs.lybraryError.insertAdjacentHTML('beforeend', markup);
 };
@@ -82,4 +78,15 @@ const makeEmptyStorageError = () => {
   refs.lybraryGallery.innerHTML = '';
   refs.lybraryError.innerHTML = '';
   refs.lybraryError.insertAdjacentHTML('beforeend', markup);
+};
+
+const makeCurrentBtn = () => {
+  if (document.body.dataset.page === 'Queue') {
+    refs.lybraryWatchedBtn.classList.remove('current-lib-btn');
+    refs.lybraryQueueBtn.classList.add('current-lib-btn');
+  }
+  if (document.body.dataset.page === 'Watched') {
+    refs.lybraryQueueBtn.classList.remove('current-lib-btn');
+    refs.lybraryWatchedBtn.classList.add('current-lib-btn');
+  }
 };

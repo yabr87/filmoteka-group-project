@@ -12,7 +12,6 @@ import { getDatabase, ref, set, get, child, update } from 'firebase/database';
 import Notiflix from 'notiflix';
 import { renderBtn } from './render/renderAuthBtns';
 import { listeners } from 'process';
-import { libraryFetch, makeLogInError } from './markup/libraryMarkup';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyBakZQ7NSRmE_SAmTsvnOPb_I7LECSfEIo',
@@ -187,31 +186,23 @@ export const getUserData = async () => {
   });
 };
 
-const handleAuthClick = async e => {
+// Перевіряє чи зареєстрований користувач, привітання через повідомлення
+
+export const greet = () => {
+  getCurrentUser(auth).then(r => {
+    if (r === null) {
+      Notiflix.Notify.info('Please sign in', refs.mesageOption);
+    } else Notiflix.Notify.success(`Hi ${r.displayName}`, refs.mesageOption);
+  });
+};
+
+const handleAuthClick = e => {
   if (e.target.dataset.type === 'sign-in') {
-    await authentificate();
-    if (document.body.dataset.page && document.body.dataset.page === 'Queue') {
-      libraryFetch('Queue');
-    }
-    if (
-      document.body.dataset.page &&
-      document.body.dataset.page === 'Watched'
-    ) {
-      libraryFetch('Watched');
-    }
+    authentificate();
   }
   if (e.target.dataset.type === 'log-out') {
     logOut();
     renderBtn(false);
-    if (document.body.dataset.page && document.body.dataset.page === 'Queue') {
-      makeLogInError();
-    }
-    if (
-      document.body.dataset.page &&
-      document.body.dataset.page === 'Watched'
-    ) {
-      makeLogInError();
-    }
   }
 };
 
