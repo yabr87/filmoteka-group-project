@@ -32,7 +32,7 @@ const onHeaderBtnsClick = e => {
 
 refs.lybraryBtnsWrap.addEventListener('click', onHeaderBtnsClick);
 refs.lybraryGallery.addEventListener('click', onFilmClick);
-
+refs.lybraryQueueBtn.classList.add('current-lib-btn');
 document.body.setAttribute('data-page', 'Queue');
 
 libraryFetch('Queue');

@@ -102,7 +102,7 @@
 .logo-link {
   color: var(--mainWhite);
   align-items: center;
-  transition: color 0.35s linear;
+  transition: color 0.25s $timing-function;
   display: flex;
 }
 
