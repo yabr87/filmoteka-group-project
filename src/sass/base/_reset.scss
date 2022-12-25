@@ -1,10 +1,14 @@
 body {
   font-family: $font-main;
-  // background-color: var(--body);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+
+  main {
+    flex: 1;
+  }
 }
+
 p,
 ul,
 h1,

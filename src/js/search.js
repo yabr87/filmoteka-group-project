@@ -61,7 +61,6 @@ async function handleSubmit(event) {
 }
 
 function cleareOldSerch() {
-  // page = 1; немає такої змінної
   searchTerm = '';
   refs.mainLibrary.innerHTML = '';
   refs.form.reset();
