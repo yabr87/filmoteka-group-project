@@ -1,35 +1,41 @@
 <header class="header-library">
-  <div class="header-container container">
-    <div class="header-logo-container">
-      <a href="./index.html" class="logo-link">
-        <svg class="logo-svg" width="24" height="24">
-          <use href="./images/icon.svg#icon-film"></use>
-        </svg>
-        <p class="logo-text">Filmoteka</p>
-      </a>
+  <div class="container header-library-container">
+    <div class="header-container">
+      <div class="header-logo-container">
+        <a href="./index.html" class="logo-link">
+          <svg class="logo-svg" width="24" height="24">
+            <use href="./images/icon.svg#icon-film"></use>
+          </svg>
+          <p class="logo-text">Filmoteka</p>
+        </a>
+      </div>
+      <div class="header-nav-container">
+        <nav class="header-nav">
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="./index.html" id="home" class="link">HOME</a>
+            </li>
+            <li class="nav-item">
+              <a
+                href="./library.html"
+                id="library"
+                class="link nav-link current"
+                >MY LIBRARY</a
+              >
+              <div class="hover-line-lib"></div>
+            </li>
+          </ul>
+        </nav>
+      </div>
     </div>
-    <div class="header-nav-container">
-      <nav class="header-nav">
-        <ul class="nav-list">
-          <li class="nav-item">
-            <a href="./index.html" id="home" class="link">HOME</a>
-          </li>
-          <li class="nav-item">
-            <a href="./library.html" id="library" class="link nav-link current"
-              >MY LIBRARY</a
-            >
-          </li>
-        </ul>
-      </nav>
+    <div class="btn-container library-btns">
+      <button class="lib-btn watched" data-type="watched">Watched</button>
+      <button class="lib-btn queue" data-type="queue">Queue</button>
     </div>
-  </div>
-  <div class="btn-container library-btns">
-    <button class="lib-btn watched" data-type="watched">Watched</button>
-    <button class="lib-btn queue" data-type="queue">Queue</button>
-  </div>
-  <div class="search-error-container">
-    <p class="search-error is-hidden">
-      Search result not successful. Enter the correct movie name and
-    </p>
+    <div class="search-error-container">
+      <p class="search-error is-hidden">
+        Search result not successful. Enter the correct movie name and
+      </p>
+    </div>
   </div>
 </header>

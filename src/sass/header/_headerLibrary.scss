@@ -35,10 +35,9 @@
 }
 
 .btn-container {
-  margin-top: 49px;
-  margin-bottom: 65px;
   display: flex;
   justify-content: center;
+  align-items: baseline;
 }
 
 .lib-btn:not(:last-child) {
@@ -90,7 +89,7 @@
   display: none;
 }
 
-@media screen and (min-width: 360px) {
+@media screen and (min-width: 480px) {
   .logo-text {
     display: block;
   }

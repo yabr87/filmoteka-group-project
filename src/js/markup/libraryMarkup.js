@@ -1,25 +1,36 @@
 import { refs } from '../refs';
-import { getUserData } from '../firebase';
+import { getCurrentUser, getUserData } from '../firebase';
 import { MovieService, MovieService } from '../fetchservice';
 import { checkPoster } from '../components/checkposter';
 
 const movieService = new MovieService();
 
 export const libraryFetch = type => {
-  getUserData().then(r => {
-    if (r[type]) {
-      Promise.all(movieService.fetchByMultipleIds(r[type])).then(r => {
-        document.body.setAttribute('data-page', type);
-        makeCurrentBtn();
-        createLybraryMarckup(r);
+  getCurrentUser().then(r => {
+    if (r) {
+      getUserData().then(r => {
+        if (r[type]) {
+          Promise.all(movieService.fetchByMultipleIds(r[type])).then(r => {
+            document.body.setAttribute('data-page', type);
+            makeCurrentBtn();
+            createLybraryMarckup(r);
+          });
+        }
+        if (!r[type]) {
+          refs.lybraryGallery.innerHTML = '';
+          makeEmptyStorageError();
+        } else {
+          refs.lybraryGallery.innerHTML = '';
+        }
       });
-    } else {
-      refs.lybraryGallery.innerHTML = '';
+    }
+    if (!r) {
+      makeLogInError();
     }
   });
 };
 
-function createLybraryMarckup(filmsArr) {
+const createLybraryMarckup = filmsArr => {
   let markup = filmsArr.map(
     ({
       data: { poster_path, title, release_date, genres, id, vote_average },
@@ -49,9 +60,25 @@ function createLybraryMarckup(filmsArr) {
     }
   );
 
+  refs.lybraryError.innerHTML = '';
   refs.lybraryGallery.innerHTML = '';
   refs.lybraryGallery.insertAdjacentHTML('beforeend', markup.join(''));
-}
+};
+
+const makeLogInError = () => {
+  const markup =
+    '<p class="library-error">Please log in to use your Library!</p>';
+
+  refs.lybraryError.innerHTML = '';
+  refs.lybraryError.insertAdjacentHTML('beforeend', markup);
+};
+
+const makeEmptyStorageError = () => {
+  const markup = '<p class="library-error">Your storage is empty!</p>';
+  refs.lybraryGallery.innerHTML = '';
+  refs.lybraryError.innerHTML = '';
+  refs.lybraryError.insertAdjacentHTML('beforeend', markup);
+};
 
 const makeCurrentBtn = () => {
   if (document.body.dataset.page === 'Queue') {

@@ -43,6 +43,7 @@ async function handleSubmit(event) {
     data === '' ||
     data.results.length === 0
   ) {
+    refs.paginationContainer.innerHTML = '';
     refs.serchError.classList.remove('is-hidden');
     cleareOldSerch();
     return;
