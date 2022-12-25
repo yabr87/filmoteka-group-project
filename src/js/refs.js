@@ -18,7 +18,7 @@ export const refs = {
   trendsBtns: document.querySelectorAll('.genre-button'),
   loadOptions: {
     clickToClose: true,
-    svgSize: '150px',
+    svgSize: '100px',
     svgColor: '#FF6B01',
   },
   mesageOption: {

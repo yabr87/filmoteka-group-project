@@ -1,6 +1,5 @@
-// доробити розмітку модалки
 import Notiflix from 'notiflix';
-
+import throttle from 'lodash.throttle';
 import { refs } from '../refs';
 import { MovieService } from '../fetchservice';
 import { getCurrentUser, getUserData, manageUserData } from '../firebase';
@@ -37,7 +36,7 @@ export async function onFilmClick(event) {
       modalLightbox
         .element()
         .querySelector('.modal-cointainer-btn')
-        .addEventListener('click', onModalBtnsClick);
+        .addEventListener('click', throttle(onModalBtnsClick, 1000));
 
       modalLightbox.element().querySelector('.trailer-btn').onclick =
         showTrailer;
@@ -185,11 +184,15 @@ async function onModalBtnsClick(event) {
   if (!btnType) {
     return;
   }
+
   if (event.target.classList.contains('disabled')) {
     Notiflix.Notify.failure('Log in first!', refs.mesageOption);
     return;
   }
-
+  Notiflix.Loading.hourglass({
+    svgSize: '100px',
+    svgColor: '#FF6B01',
+  });
   if (btnType === 'Queue') {
     manageUserData(filmId, btnType);
 
@@ -205,6 +208,7 @@ async function onModalBtnsClick(event) {
       }, 1000);
     }
   }
+
   if (btnType === 'Watched') {
     manageUserData(filmId, btnType);
     if (event.target.textContent === 'Remove from Watched') {
@@ -219,4 +223,5 @@ async function onModalBtnsClick(event) {
       }, 1000);
     }
   }
+  Notiflix.Loading.remove(250);
 }
