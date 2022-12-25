@@ -32,7 +32,7 @@
   background-color: rgba(0, 0, 0, 0.56);
   opacity: 1;
   z-index: 1000;
-  transition-duration: 0.4s;
+  transition: all 350ms $timing-function;
 }
 
 .hidden {
@@ -51,9 +51,11 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  // box-shadow: (0px 8px 40px rgba(0, 0, 0, 0.55));
+  opacity: 1;
   border-radius: 10px;
   padding: 20px;
+  transform: scale(1);
+  // transition: opacity $duration $timing-function;
 
   @media screen and (min-width: 768px) {
     width: 618px;

@@ -2,6 +2,7 @@ import { refs } from '../refs';
 import { MovieService } from '../fetchservice';
 import { createGalleryMarckup } from '../markup/homepage';
 import { renderhomepage } from './renderhomepage';
+import { Loading } from 'notiflix/build/notiflix-loading-aio';
 
 const movieService = new MovieService();
 
@@ -45,6 +46,7 @@ async function renderGenre(event) {
   movieService.page = 1;
 
   //набираємо 20 елементів в масив
+  Loading.hourglass(refs.loadOptions);
   while (AllCartoons.length < requiredLength) {
     const data = await movieService.getTrending();
     movieArr = data.results;
@@ -55,6 +57,7 @@ async function renderGenre(event) {
     AllCartoons = AllCartoons.concat(genreFromPage);
     movieService.page += 1;
   }
+  Loading.remove();
 
   //очистили, відрендерили
   refs.mainLibrary.innerHTML = '';
