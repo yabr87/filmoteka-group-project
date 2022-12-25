@@ -9,17 +9,18 @@ export const refs = {
   window,
   inputEl: document.querySelector('#slider'),
   main: document.querySelector('main'),
-  loadOptions: {
-    clickToClose: true,
-    svgSize: '150px',
-    svgColor: '#FF6B01',
-  },
   paginationContainer: document.querySelector('#paginationhomepage'),
   lybraryGallery: document.querySelector('.library-gallery'),
   lybraryQueueBtn: document.querySelector('.queue'),
   lybraryWatchedBtn: document.querySelector('.watched'),
   lybraryBtnsWrap: document.querySelector('.library-btns'),
   lybraryError: document.querySelector('.library-error-wrap'),
+  trendsBtns: document.querySelectorAll('.genre-button'),
+  loadOptions: {
+    clickToClose: true,
+    svgSize: '150px',
+    svgColor: '#FF6B01',
+  },
   mesageOption: {
     showOnlyTheLastOne: true,
     clickToClose: true,
