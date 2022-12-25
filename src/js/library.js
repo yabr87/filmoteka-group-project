@@ -17,17 +17,23 @@ const onHeaderBtnsClick = e => {
     return;
   }
   if (btnType === 'queue') {
-    e.target.setAttribute('data-test', 'current');
+    document.body.setAttribute('data-page', 'Queue');
     libraryFetch('Queue');
+    refs.lybraryWatchedBtn.classList.remove('current-lib-btn');
+    refs.lybraryQueueBtn.classList.add('current-lib-btn');
   }
   if (btnType === 'watched') {
-    e.target.setAttribute('data-test', 'current');
+    document.body.setAttribute('data-page', 'Watched');
     libraryFetch('Watched');
+    refs.lybraryQueueBtn.classList.remove('current-lib-btn');
+    refs.lybraryWatchedBtn.classList.add('current-lib-btn');
   }
 };
 
 refs.lybraryBtnsWrap.addEventListener('click', onHeaderBtnsClick);
-
 refs.lybraryGallery.addEventListener('click', onFilmClick);
 
+document.body.setAttribute('data-page', 'Queue');
 libraryFetch('Queue');
+
+MakeAuthBtn();
