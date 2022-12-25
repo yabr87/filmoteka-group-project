@@ -3,6 +3,7 @@ import { MovieService } from './fetchservice';
 import { createGalleryMarckup } from './markup/homepage';
 import { Loading } from 'notiflix/build/notiflix-loading-aio';
 import { paginationMainPage } from './paginationhomepage';
+import { deactivateTrendsBtn } from './components/deactivateTrendsBtn';
 
 let searchTerm = '';
 const movieService = new MovieService();
@@ -25,6 +26,9 @@ refs.form.addEventListener('submit', handleSubmit);
 
 async function handleSubmit(event) {
   event.preventDefault();
+
+  deactivateTrendsBtn();
+
   searchTerm = event.target.searchQueue.value.trim();
   if (searchTerm === '') {
     refs.serchError.classList.remove('is-hidden');
