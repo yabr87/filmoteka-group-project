@@ -15,9 +15,7 @@ export function createGalleryMarckup(response) {
           />
           <h2 class="main-film-name theme-light">${title}</h2>
           <p class="main-film-description" data-id="${id}">
-            <span class="main-film-genres">${movieService
-              .getGenresByIds(genre_ids)
-              .join(', ')}</span> |
+            <span class="main-film-genres">${movieService.getGenresByIdsLimited(genre_ids, 3, 'Others').join(', ')}</span> |
             <span class="main-film-premiere">${
               release_date ? release_date.slice(0, 4) : ''
             }</span>

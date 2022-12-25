@@ -66,8 +66,18 @@ export class MovieService {
   getGenresByIds(ids) {
     const genres = [];
     ids.forEach(id => {
-      genres.push(this.#genresMap.get(id));
+      if (this.#genresMap.get(id)) {
+        genres.push(this.#genresMap.get(id));
+      }
     });
+    return genres;
+  }
+
+  getGenresByIdsLimited(ids, maxElements, substitution) {
+    const genres = this.getGenresByIds(ids);
+    if (genres.length > maxElements) { 
+      genres.splice(maxElements - 1, genres.length - (maxElements -1), substitution);
+    } 
     return genres;
   }
 
