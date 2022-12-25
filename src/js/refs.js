@@ -16,6 +16,8 @@ export const refs = {
   },
   paginationContainer: document.querySelector('#paginationhomepage'),
   lybraryGallery: document.querySelector('.library-gallery'),
+  lybraryQueueBtn: document.querySelector('.queue'),
+  lybraryWatchedBtn: document.querySelector('.watched'),
   lybraryBtnsWrap: document.querySelector('.library-btns'),
   mesageOption: {
     showOnlyTheLastOne: true,

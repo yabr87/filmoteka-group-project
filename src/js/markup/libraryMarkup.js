@@ -10,6 +10,7 @@ export const libraryFetch = type => {
     if (r[type]) {
       Promise.all(movieService.fetchByMultipleIds(r[type])).then(r => {
         document.body.setAttribute('data-page', type);
+        makeCurrentBtn();
         createLybraryMarckup(r);
       });
     } else {
@@ -20,7 +21,9 @@ export const libraryFetch = type => {
 
 function createLybraryMarckup(filmsArr) {
   let markup = filmsArr.map(
-    ({ data: { poster_path, title, release_date, genres, id } }) => {
+    ({
+      data: { poster_path, title, release_date, genres, id, vote_average },
+    }) => {
       const filmGenres = genres
         .map(genre => {
           return genre.name;
@@ -39,6 +42,7 @@ function createLybraryMarckup(filmsArr) {
               <span class="main-film-premiere">${
                 release_date ? release_date.slice(0, 4) : ''
               }</span>
+              <span class="modal-rating-color library-rating">${vote_average}</span>
             </p>
           </li>
           `;
@@ -48,3 +52,14 @@ function createLybraryMarckup(filmsArr) {
   refs.lybraryGallery.innerHTML = '';
   refs.lybraryGallery.insertAdjacentHTML('beforeend', markup.join(''));
 }
+
+const makeCurrentBtn = () => {
+  if (document.body.dataset.page === 'Queue') {
+    refs.lybraryWatchedBtn.classList.remove('current-lib-btn');
+    refs.lybraryQueueBtn.classList.add('current-lib-btn');
+  }
+  if (document.body.dataset.page === 'Watched') {
+    refs.lybraryQueueBtn.classList.remove('current-lib-btn');
+    refs.lybraryWatchedBtn.classList.add('current-lib-btn');
+  }
+};
