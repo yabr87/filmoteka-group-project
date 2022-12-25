@@ -147,13 +147,13 @@ async function markupModal(film) {
           ifUserSignin ? '' : 'disabled'
         }" data-id="${id}"
           data-type="Watched">${
-            isFilmInWatched ? 'Remove' : 'add to Watched'
+            isFilmInWatched ? 'Remove from Watched' : 'add to Watched'
           }</button>
 
         <button class="modal-btn js-btn-queue ${
           ifUserSignin ? '' : 'disabled'
         }" data-id="${id}" data-type="Queue" 
-        >${isFilmInQueue ? 'Remove' : 'add to Queue'}</button>
+        >${isFilmInQueue ? 'remove from Queue' : 'add to Queue'}</button>
       </div>
 
     </div>
@@ -193,10 +193,10 @@ async function onModalBtnsClick(event) {
   if (btnType === 'Queue') {
     manageUserData(filmId, btnType);
 
-    if (event.target.textContent === 'Remove') {
+    if (event.target.textContent === 'Remove from Queue') {
       event.target.textContent = 'Add to Queue';
     } else {
-      event.target.textContent = 'Remove';
+      event.target.textContent = 'Remove from Queue';
     }
 
     if (currentPage === 'Queue') {
@@ -207,10 +207,10 @@ async function onModalBtnsClick(event) {
   }
   if (btnType === 'Watched') {
     manageUserData(filmId, btnType);
-    if (event.target.textContent === 'Remove') {
+    if (event.target.textContent === 'Remove from Watched') {
       event.target.textContent = 'Add to Watched';
     } else {
-      event.target.textContent = 'Remove';
+      event.target.textContent = 'Remove from Watched';
     }
 
     if (currentPage === 'Watched') {

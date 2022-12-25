@@ -1,4 +1,8 @@
 .auth-btn {
+  position: absolute;
+
+  top: 105px;
+
   font-family: inherit;
   border-radius: 5px;
   padding: 5px 10px;
@@ -19,6 +23,11 @@
   &:focus {
     background-color: var(--accent);
     border: 1px solid var(--accent);
+  }
+  @media screen and (max-width: 768px) {
+    top: 175px;
+    left: 50%;
+    transform: translateX(-50%);
   }
 }
 
@@ -43,6 +52,11 @@
 .lib-btn:focus,
 .lib-btn:hover,
 .current-btn {
+  background-color: var(--accent);
+  border: 1px solid var(--accent);
+}
+
+.current-lib-btn {
   background-color: var(--accent);
   border: 1px solid var(--accent);
 }

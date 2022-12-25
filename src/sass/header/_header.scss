@@ -1,51 +1,71 @@
 .header {
+  position: relative;
   padding-top: 40px;
   height: 230px;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  background-image: url('/src/images/header-background-mobile.png');
 
-  @include retina {
-    background-image: url('/src/images/header-background-mobile@2x.png');
+  @media screen and (min-width: 320px) and (max-width: 768px) {
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.56),
+        rgba(0, 0, 0, 0.56)
+      ),
+      url('/src/images/header-background-mobile.png');
+
+    @include retina {
+      background-image: linear-gradient(
+          to right,
+          rgba(0, 0, 0, 0.56),
+          rgba(0, 0, 0, 0.56)
+        ),
+        url('/src/images/header-background-mobile@2x.png');
+    }
   }
-
-  @include tablet {
-    height: 216px;
+  @media screen and (min-width: 768px) and (max-width: 1280px) {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    background-image: url('/src/images/header-background-tablet.png');
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.56),
+        rgba(0, 0, 0, 0.56)
+      ),
+      url('/src/images/header-background-tablet.png');
 
     @include retina {
-      background-image: url('/src/images/header-background-tablet@2x.png');
+      background-image: linear-gradient(
+          to right,
+          rgba(0, 0, 0, 0.56),
+          rgba(0, 0, 0, 0.56)
+        ),
+        url('/src/images/header-background-tablet@2x.png');
     }
   }
 
   @include desktop {
-    background-image: url('/src/images/header-background-desktop.png');
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.56),
+        rgba(0, 0, 0, 0.56)
+      ),
+      url('/src/images/header-background-desktop.png');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
 
     @include retina {
-      background-image: url('/src/images/header-background-desktop@2x.png');
+      background-image: linear-gradient(
+          to right,
+          rgba(0, 0, 0, 0.56),
+          rgba(0, 0, 0, 0.56)
+        ),
+        url('/src/images/header-background-desktop@2x.png');
     }
   }
 }
-.header-container-main {
-  padding-bottom: 44px;
-}
-.header-container-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  // margin-bottom: 35px;
 
-  @include tablet {
-    // margin-bottom: 20px;
-  }
-}
 .btn {
   border: none;
   background: transparent;
@@ -55,6 +75,7 @@
   margin-left: -20px;
   margin-bottom: 2px;
 }
+
 .auth-link-wrap {
   position: relative;
   display: flex;
@@ -64,6 +85,8 @@
 }
 
 .error {
+  display: flex;
+  justify-content: center;
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 400;
@@ -125,6 +148,12 @@ input:focus:-ms-input-placeholder {
   }
 }
 
+.header-container-nav {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
 .header-container-icon {
   display: flex;
   align-items: center;
@@ -140,18 +169,6 @@ input:focus:-ms-input-placeholder {
   color: var(--mainWhite);
   align-items: center;
 }
-.current {
-  color: var(--accent-color);
-}
-.hover-line::after {
-  display: block;
-  content: '';
-
-  width: 34px;
-  height: 3px;
-
-  background-color: #ff001b;
-}
 
 .nav-links-item:not(:last-child) {
   margin-right: 40px;
@@ -166,7 +183,6 @@ input:focus:-ms-input-placeholder {
   font-size: 30px;
   font-weight: 500;
   line-height: 1.17;
-  display: none;
 }
 
 @media screen and (min-width: 768px) {

@@ -24,25 +24,21 @@ export function paginationMainPage(totalPage, onPaginationClickCallback) {
     totalItems: totalPage,
     itemsPerPage: 1,
     visiblePages: 5,
-    centerAlign: true,
-    firstItemClassName: 'tui-first-child',
-    lastItemClassName: 'tui-last-child',
-    usageStatistics: true,
-    defaultTemplate: {
-      page: '<a href="#" class="tui-page-btn ">{{page}}</a>',
+    template: {
+      page: '<a href="#" class="pagination-btn">{{page}}</a>',
       currentPage:
-        '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
+        '<strong class="pagination-btn current-page-btn">{{page}}</strong>',
       moveButton:
-        '<a href="#" class="tui-page-btn tui-{{type}}">' +
-        '<span class="tui-ico-{{type}}">{{type}}</span>' +
+        '<a href="#" class="move-btns pagination-btn tui-{{type}}">' +
+        '<span class="btn-{{type}}">{{type}}</span>' +
         '</a>',
       disabledMoveButton:
-        '<span class="tui-page-btn tui-is-disabled tui-{{type}}">' +
-        '<span class="tui-ico-{{type}}">{{type}}</span>' +
+        '<span class=" tui-is-disabled tui-{{type}}">' +
+        '<span class="btn-{{type}}">{{type}}</span>' +
         '</span>',
       moreButton:
-        '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip">' +
-        '<span class="tui-ico-ellip">...</span>' +
+        '<a href="#" class=" tui-{{type}}-is-ellip">' +
+        '<span class="pagination-btn btn-ellip">...</span>' +
         '</a>',
     },
   };
