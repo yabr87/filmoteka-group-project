@@ -48,6 +48,7 @@
     // margin-bottom: 20px;
   }
 }
+
 .btn {
   border: none;
   background: transparent;
@@ -57,6 +58,7 @@
   margin-left: -20px;
   margin-bottom: 2px;
 }
+
 .auth-link-wrap {
   position: relative;
   display: flex;
@@ -141,18 +143,6 @@ input:focus:-ms-input-placeholder {
   text-transform: uppercase;
   color: var(--mainWhite);
   align-items: center;
-}
-.current {
-  color: var(--accent-color);
-}
-.hover-line::after {
-  display: block;
-  content: '';
-
-  width: 34px;
-  height: 3px;
-
-  background-color: #ff001b;
 }
 
 .nav-links-item:not(:last-child) {

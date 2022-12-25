@@ -106,16 +106,7 @@
 .logo-link:hover {
   color: var(--accent);
 }
-.hover-line-lib::after {
-  display: block;
-  content: '';
 
-  width: 68px;
-  height: 3px;
-
-  background-color: #ff001b;
-  //   border-radius: 0.5px;
-}
 .logo-svg {
   margin-right: 10px;
 }
