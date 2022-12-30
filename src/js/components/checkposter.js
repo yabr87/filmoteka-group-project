@@ -1,4 +1,4 @@
-import noPoster from '../../images/poster_null.jpg';
+import noPoster from '../../images/poster-null.jpg';
 
 export function checkPoster(poster_path) {
   let poster = ``;

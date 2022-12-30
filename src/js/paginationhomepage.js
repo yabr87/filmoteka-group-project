@@ -24,6 +24,7 @@ export function paginationMainPage(totalPage, onPaginationClickCallback) {
     totalItems: totalPage,
     itemsPerPage: 1,
     visiblePages: 5,
+    centerAlign: true,
     template: {
       page: '<a href="#" class="pagination-btn">{{page}}</a>',
       currentPage:
